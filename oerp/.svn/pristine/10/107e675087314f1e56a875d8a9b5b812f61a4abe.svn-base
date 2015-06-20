@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="no-js no-touch no-touch"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>OpenERP - 项目管理</title>
+<link rel="stylesheet" href="css/common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/website.css" type="text/css" media="all" />
+</head>
+<body class="oe_styling_v8">
+<div class="oe_website_contents">        
+<header class="oe_website_header">
+        <div class="oe_row oe_fit">
+            <div class="oe_span3 oe_logo_menu">
+                <a href="#" class="ab_menu_logo">
+                    <img class="oe_logo_img" alt="OpenERP: Open Source Business Apps" src="images/logo_oe_top_old_and_small.png">
+                </a>
+            </div>
+            <!--导航栏-->
+            <nav class="oe_span9 oe_right oe_top_menu" id="top-menu">
+              <div class="oe_top_menu_entry"><a class="ab_menu_apps" href="index.htm">首页</a></div>
+                <div class="oe_top_menu_entry"><a class="ab_menu_partners" href="OpenERP-Servers.html">服务</a></div>
+                <div class="oe_top_menu_entry"><a class="ab_menu_freetrial" href="Blog.htm">博客</a></div>
+                <div class="oe_top_menu_entry"><a class="ab_menu_contact" href="OpenERPHelpMe.html">联系我们</a></div>
+                <div class="oe_top_menu_entry"><a class="ab_menu_signin" href="#">登录</a></div>
+            </nav>
+        </div>
+    </header>  
+    <article class="oe_page">
+         <section class="oe_container">
+    <div class="oe_row oe_spaced">
+        <h2 style="font-size:24px">项目管理模块</h2><br />
+        <h3 style="font-size:20px">灵活度高，使用简单 </h3>
+        <div class="oe_span6">
+            <div class="oe_demo oe_picture oe_screenshot">
+                <img src="images/12.jpg">
+                <span class="oe_demo_play">&nbsp;</span>
+            </div>
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+OpenERP的合作性和及时的项目管理能够帮助团队更好的工作。对每一件事情都进行跟进，包括从大的项目到小的细节，从客户合同的签订到账务情况。
+            </p>
+        </div>
+    </div>
+</section>  
+
+<section class="oe_container oe_dark">
+    <div class="oe_row oe_padded">
+        <h2 style="font-size:24px">设计出符合您实际流程的功能</h2><br />
+        <div class="oe_mt32">
+            <p>
+将每一步进程组织成项目的管理。用看板视图来处理任务和问题，用甘特图表来计划任务执行时间并且在日历视图中设置截止时间。每一个项目都会有他自己的平台去优化他们的工作
+            </p>
+        </div>
+        <div class="oe_span4">
+            <h3 style="font-size:20px">Kanban</h3><br />
+            <div class="oe_row_img oe_centered">
+            <img class="oe_picture oe_screenshot" src="images/36.jpg">
+            </div>
+        </div>
+        <div class="oe_span4 ">
+            <h3 style="font-size:20px">Gantt Charts</h3><br />
+            <img class="oe_picture oe_screenshot" src="images/49.jpg">
+        </div>
+        <div class="oe_span4 ">
+            <h3 style="font-size:20px">Calendar</h3><br />
+            <img class="oe_picture oe_screenshot" src="images/31.jpg">
+        </div>
+    </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row">
+        <h2 style="font-size:24px">使用方便</h2><br />
+        <div class="oe_span6">
+                <img class="oe_picture oe_screenshot" src="images/13.jpg">
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+能够快速的组建起来. 界面的简易化使得操作人员不需要学习，每一步操作也是十分快捷，让您的业务流程也十分顺畅。
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <h2 style="font-size:24px">一起工作</h2><br />
+    <h3 style="font-size:20px">及时的沟通，共享文件，一体化的邮件</h3>
+    <div class="oe_row">
+        <div class="oe_span6">
+            <p class="oe_mt32">
+用公开的聊天工具您可以和您的同事沟通也可以和您的客户一起分享针对任务和问题的评论和文件。利用邮件整合功能可以将所有的问题整合起来。
+用在线的聊天功能跟用户以及客户交流。
+            </p>
+        </div>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="images/47.jpg">
+        </div>
+   </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row">
+        <h2 style="font-size:24px">共同编辑</h2><br />
+        <h3 style="font-size:20px">在您的任务中有一个强有力地线上共制平台</h3>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="images/46.jpg">
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+在模块中可以共同编辑一些相同的产品说明和会议记录。统一的线上共同平台让好几个人可以在同时处理相同的一个任务。
+这个功能在议论激烈的会议中非常高效，可以处理会议记录以及复杂的产品说明。每一个用户有他自己的颜色样式并且可以重复整个创建和内容。
+        </div>
+    </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_row">
+        <h2 style="font-size:24px">让工作圆满完成</h2><br />
+        <div class="oe_span6">
+            <p class="oe_mt32">
+在跟进的项目中设置一些你感兴趣的时间点进行预警。用红绿标识来浏览那些什么是您已经做了的和需要留意的。
+            </p>
+        </div>
+        <div class="oe_span6">
+            <img class="oe_picture oe_screenshot" src="images/36.jpg">
+        </div>
+   </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_row">
+        <h2 style="font-size:20px">时刻表，合同 &amp; 票据</h2><br />
+        <div class="oe_span6">
+            <img class="oe_screenshot oe_picture" src="images/30.jpg">
+        </div>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+项目将自动和您的客户合同集成并且立即开始处理您的票据。材料的统计以及工时表记录也是非常的容易。
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<section class="oe_container oe_dark">
+    <div class="oe_row">
+        <h2 style="font-size:24px">跟进问题的解决方案</h2><br />
+        <h3 style="font-size:20px">具有服务，帮助台，缺陷跟进等功能。</h3>
+        <div class="oe_span6">
+            <p class="oe_mt32">
+将在项目中出现的问题挑选出来是为了提供一个更好的解决方案。将客户在每一个问题上的关联集成出来并且反馈出报表显示您的团队在处理这些问题的表现。
+            </p>
+        </div>
+        <div class="oe_span6">
+            <div class="oe_bg_img oe_centered">
+                <img class="oe_picture" src="images/project_illu_01.png">
+            </div>
+        </div>
+   </div>
+</section>
+
+   
+
+
+
+
+
+    </article>
+
+        </div>
+        
+        <footer class="oe_website_footer">
+         <!--<article class="oe_row">
+                <section class="oe_span3">
+                    <h1>联系我们</h1>
+                    <ul id="footer-about">
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Jobs</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">References</a></li>
+                        <li><a href="#">OpenERP Open Days</a></li>
+                        <li class="oe_mt16"><a href="#"><i class="icon-twitter-sign"></i>Twitter</a></li>
+                        <li><a href="#"><i class="icon-facebook-sign"></i>Facebook</a></li>
+                        <li><a href="#"><i class="icon-google-plus-sign"></i>Google+</a></li>
+                    </ul>
+                </section>
+                <section class="oe_span3">
+                    <h1>关于 OpenERP</h1>
+                    <ul id="footer-devs">
+                        <li><a href="#">Download</a></li>
+                        <li><a href="#">Launchpad</a></li>
+                        <li><a href="#">Automated Tests</a></li>
+                        <li class="oe_mt16"><a href="#">Report a Bug</a></li>
+                        <li><a href="#">Help Translate</a></li>
+                    </ul>
+                </section>
+                <section class="oe_span3">
+                    <h1>服务</h1>
+                    <ul id="footer-services">
+                        <li><a href="#">Pricing</a></li>
+                        <li class="oe_mt16"><a href="#">Find a Partner</a></li>
+                        <li><a href="#">Become a Partner</a></li>
+                        <li class="oe_mt16"><a href="#">Training</a></li>
+                        <li><a href="#">Online Training</a></li>
+                        <li><a href="#">Certification Exam</a></li>
+                        <li><a href="#">Education program</a></li>
+                        
+                        
+                    </ul>
+                </section>
+                <section class="oe_span3">
+                    <h1>文档</h1>
+                    <ul id="footer-doc">
+                        <li><a href="#">Get Help</a></li>
+                        <li><a href="#">Documentation</a></li>
+                        <li class="oe_mt16"><a href="#">Paper Books</a></li>
+                        <li><a href="#">Free E-Books</a></li>
+                        <li><a href="#">Developer Memento</a></li>
+                        <li><a href="#">Presentations</a></li>
+                    </ul>
+                </section>
+            </article>
+            <article class="oe_row">
+                <div class="oe_span12">
+                    <h1></h1>
+                </div>
+                <section class="oe_span4 vcard">
+                    <h2 class="fn org">欧洲/非洲</h2>
+                            <ul class="vcard">
+                                <li class="oe_small adr">
+                                    <p><strong>Sales Office</strong></p>
+                                    <span class="street-address">Avenue Edmond Van Nieuwenhuyse, 5 (Serenitas building)</span> 
+                                    <span class="postcode">1160</span> 
+                                    <span class="locality">Brussels</span>, 
+                                    <span class="country-name">Belgium</span>
+                                </li>
+                                <li class="tel"><a href="tel:+32 2 290 34 90"><i class="icon-phone"></i>+32 2 290 34 90</a></li>
+                                <li><br></li>
+                                <li class="oe_small adr">
+                                    <p><strong>Services &amp; R&amp;D</strong></p>
+                                    <span class="street-address">Chaussée de Namur, 40</span>
+                                    <span class="postcode">1367</span>
+                                    <span class="locality">Grand-Rosière</span>, 
+                                    <span class="country-name">Belgium</span>
+                                </li>
+                                <li class="tel"><a href="tel:+32 81 81 37 00"><i class="icon-phone"></i>+32 81 81 37 00</a></li>
+                                <li class="fax"><a href="fax:+32 81 73 35 01"><i class="icon-fax"></i>+32 81 73 35 01 (fax)</a></li>
+                            </ul>
+                </section>
+                <section class="oe_span4 vcard">
+                    <h2 class="fn org">美洲</h2>
+                    <ul>
+                        <li class="oe_small adr">
+                            <p><strong>Sales, Services</strong></p>
+                            <span class="street-address">260 Main Street</span>, 
+                            <span class="post-office-box">Suite 203</span>
+                            <span class="locality">Redwood City</span>,
+                            <span class="region">CA</span>
+                            <span class="postal-code">94063</span>,
+                            <span class="country-name">United States</span>
+                        </li>
+                        <li class="tel"><a href="tel:+1(650)307-6736"><i class="icon-phone"></i>+1(650)307-6736</a></li>
+                    </ul>
+                </section>
+                <section class="oe_span4 vcard">
+                    <h2 class="fn org">亚洲 太平洋</h2>
+                    <ul>
+                        <li class="oe_small adr">
+                            <p><strong>Sales office</strong></p> 
+                            <span class="street-address">Room 4, 1/F, Kodak House II</span>
+                            <span class="postal-code">321 Java Road</span>
+                            <span class="locality">North Point, Hong Kong</span>
+                        </li><li class="tel"><i class="icon-phone"></i><a href="tel:+852 3115 7709">+852 3115 7709 <br>(ext. 25)</a></li>
+                        <li><br></li>
+                        <li class="oe_small adr">
+                            <p><strong>Services &amp; R&amp;D</strong></p>
+                            <span class="street-address">16 / 17, IT Tower 1 Infocity Gate - 1</span>
+                            <span class="locality">Gandhinagar</span> - 
+                            <span class="postal-code">382007</span>, 
+                            <span class="region">Gujarat</span>
+                            <span class="country-name">India</span>
+                        </li>
+                        <li class="tel"><i class="icon-phone"></i><a href="tel:+91(79)40 500 100">+91(79)40 500 100</a></li>
+                    </ul>
+                </section>
+            </article> -->
+			<div align="center">
+				<span style="font-family:Arial;">佛山领风羊电子商务有限公司</span>
+			</div>
+        </footer>
+        
+    
+    
+
+</body></html>

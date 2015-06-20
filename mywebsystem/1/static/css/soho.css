@@ -1,0 +1,100 @@
+html, body {
+    background-color: #333;
+    min-height: 100%;
+    height: 100%;
+    color: #eaeaea;
+}
+
+body > .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.navbar .breadcrumb {
+    margin: 7px 20px;
+    border-radius: 0;
+}
+
+body > .container {
+    width: 100%;
+    display:table;
+    min-height: calc(100% - 104px);
+    padding: 0;
+}
+
+body > .container > .row {
+    height: 100%;
+    display: table-row;
+}
+
+body > .container > .row > div {
+    display: table-cell;
+    float: none;
+}
+
+span.glyphicon {
+    margin-right: 1em;
+}
+
+#switcher span.glyphicon {
+    font-size: 1.25em;
+}
+
+#switcher {
+    background: transparent;
+    padding: 0;
+}
+
+#switcher > ul > li > a {
+    border-top: 1px solid #5c5c5c;
+    border-radius: 0;
+}
+
+#switcher > ul {
+    position: relative;
+}
+
+#switcher > ul > li {
+    width: 100%;
+    margin: 0;
+}
+
+#switcher li > a > span {
+    display: inlien-block;
+    vertical-align: middle;
+    position: relative;
+}
+
+#switcher td {
+    border: none;
+}
+
+#content {
+    background-color: #eaeaea;
+    color: #333;
+}
+
+footer {
+    background-color: #333;
+    width: 100%;
+}
+
+#switcher form {
+    width: 90%;
+    margin: 20px auto;
+    font-size: 14px;
+    color: #bfbfbf;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+#switcher form > * {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    background: transparent;
+}
+
+#switcher form > input {
+    width: calc(100% - 18px);
+}

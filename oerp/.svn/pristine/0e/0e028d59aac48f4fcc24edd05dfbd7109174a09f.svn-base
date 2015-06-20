@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>添加用户</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link id="bs-css" href="css/shop.css" rel="stylesheet">
+<script src="ckeditor/ckeditor.js"></script>
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript">
+    function add_login(){
+    doc = $.parseXML('<login/>');  
+    doc.documentElement.appendChild(create_node('password', $("#updatePassword").val()));          
+    xmldocument = new XMLSerializer().serializeToString(doc);   
+    $.ajax({
+       type: 'PUT',
+       url: '/openerp/password',
+       data:xmldocument,
+       statusCode:{
+          200:function(){
+			  alert("修改成功");
+			  $("#updatePassword").val("");
+          },500:function(){
+		  		 alert("修改失败");
+				 $("#updatePassword").val("");
+              
+          }
+       }
+    });
+    
+}
+function create_node(tag, name) {
+        e = doc.createElement(tag);
+        e.appendChild(doc.createCDATASection(name));
+        return e;
+    }
+</script>
+	<style type="text/css">
+	  body {
+		padding-bottom: 40px;
+		
+	  }
+	  .sidebar-nav {
+		padding: 9px 0;
+	  }
+	</style>
+		
+</head>
+
+<body>
+<div class="container-fluid">
+<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2><i class="icon-edit"></i>重置密码</h2>
+						<div class="box-icon">
+						</div>
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal" id="addBolg">
+							<fieldset>
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">密码</label>
+								<div class="controls">
+								  <input class="input-xlarge focused"  name="password" id="updatePassword" type="password" >
+								</div>
+							 
+							  <div class="form-actions">
+								<button type="button" class="btn btn-primary" onClick="add_login()">重置</button>
+								<button class="btn">取消</button>
+							  </div>
+							</fieldset>
+					  </form>
+					
+					</div>
+				</div>
+			
+			</div>
+			
+
+			
+			</div>
+  </div>
+	
+</div>		
+</body>
+</html>

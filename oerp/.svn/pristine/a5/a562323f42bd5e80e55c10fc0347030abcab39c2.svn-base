@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OPENERP博客测试脚本</title>
+  <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
+  <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  
+  <script type="text/javascript">
+  	$(function() {
+	    module('博客 module');
+		test('OpenerpArticle',52,function(){
+               number=Math.random()*10+1;
+              /* myDate = new Date();
+               mytime = myDate.toLocaleTimeString();    //获取当前时间
+                alert(myDate.toLocaleString( ))*/
+			   articleid=0;
+    		   commentsid=0;
+
+              //发表博客
+    		   $.ajax({
+        		   type: 'POST',
+        		   url: '/openerp/article',
+                   async: false,
+        		   data:'<article><title>测试标题</title><content>测试内容</content><tag>测试标签</tag><priority>1</priority></article> ',
+        		   success: function(data){
+				     ok($(data).find('article').length>0,"发表博客_pass标题是-测试标题，内容是-测试内容，标签是-测试标签!");
+					 ok($(data).find('article').attr('id')>0,"发表博客ID返回值_pass!"+$(data).find('article').attr('id'));
+					 articleid = $(data).find('article').attr('id');
+
+        		   }
+		       });
+			   //查看博客
+			    $.ajax({                        
+        		   type: 'GET',
+        		   url: '/openerp/article/'+articleid,
+                   async: false,
+        		   success: function(data){
+                       ok($(data).find('article').length>0,"查看博客_pass!");
+					   ok($(data).find('article').attr('id')>0,'查看博客ID_Pass!'+$(data).find('article').attr('id'));
+					   ok($(data).find('article').attr('pid') == 1,'查看博客优先级_Pass!');
+                       ok($(data).find('article').find('atime').length>0,'查看博客时间_Pass!');
+                       $(data).find('article').each(function(){
+
+                           ok($(this).children("title").text() == '测试标题','查看博客标题_Pass!'+$(this).children("title").text() );
+                           ok($(this).children("content").text()== '测试内容','查看博客内容_Pass!'+$(this).children("content").text());
+                           ok($(this).children('tag').text()== '测试标签','查看博客标签_Pass!'+$(this).children('tag').text());
+                       });
+        		   }
+		       });
+                //登录
+                $.ajax({
+        		   type: 'POST',
+        		   url: '/openerp/password',
+                   async: false,
+        		   data:'<login><password>admin</password></login>',
+        		   statusCode: {200: function() {ok(true,'登录_Pass!')}}
+		       });
+
+			   //修改博客
+			    $.ajax({
+				   type: 'PUT',
+        		   url: '/openerp/article/'+articleid,
+        		   async: false,
+				   data:' <article pid="2"><title>'+number+'</title><content>内容</content><tag>标签</tag></article>',
+        		   success: function(data){
+        			ok(true,'修改博客验证_pass!')
+					ok($(data).find('article').attr('id')==articleid,'修改博客返回值_pass!');
+        		   }
+			   });
+                 //查看修改后博客
+			   $.ajax({
+        		   type: 'GET',
+        		   url: '/openerp/article/'+articleid,
+        		   async: false,
+        		   success: function(data){
+                       ok($(data).find('article').length>0,"查看修改后的博客_pass!");
+                       ok($(data).find('atime').length>0,'查看博客时间_Pass!');
+                       ok($(data).find('article').attr('id')>0,'查看修改后博客ID_Pass!');
+					   ok($(data).find('article').attr('pid') == 2,'查看修改后博客优先级_Pass!');
+                       $(data).find("article").each(function(){
+					        ok($(this).children("title").text() == number,'查看修改后博客标题_Pass!');
+					        ok($(this).children('content').text() == '内容','查看修改后博客内容_Pass!');
+                            ok($(this).children('tag').text() == '标签','查看修改后博客标签_Pass!');
+                       })
+        		   }
+		       });
+		
+			   //博客列表
+			   $.ajax({                        
+        		   type: 'GET',
+        		   url: '/openerp/articles',
+        	       async: false,
+        		   success: function(data){
+                        ok(true,'博客列表_Pass!');
+                        ok($(data).find('article').attr('id').length>0,'博客列表ID_Pass!');
+                        ok($(data).find('article').attr('pid').length>0,'博客列表优先级_Pass!');
+                        ok($(data).find('title').length>0,'博客列表标题_Pass!');
+                        ok($(data).find('atime').length>0,'博客列表时间_Pass!');
+                        ok($(data).find('content').length>0,'博客列表内容_Pass!');
+                        ok($(data).find('tag').length>0,'博客列表标题_Pass!');
+
+        		   }
+		       });
+			  //最近博客
+			  $.ajax({
+				   type: 'GET',
+        		   url: '/openerp/latelyarticle',
+        	       async: false,
+        		   success: function(data){
+                        ok($(data).find('article').length>0,"最近博客_pass!");
+                        ok($(data).find('article').attr('id').length>0,'最近博客ID_Pass!');
+                        ok($(data).find('title').length>0,'最近博客标题_Pass!');
+                        ok($(data).find('atime').length>0,'最近博客时间_Pass!');
+                        ok($(data).find('content').length>0,'最近博客内容_Pass!');
+                        ok($(data).find('tag').length>0,'最近博客标签_Pass!');
+                        ok($(data).find('article').attr('pid').length>0,'最近博客优先级_Pass!');
+        		   }
+			   });
+
+			//评论
+            $.ajax({                        
+        		   type: 'POST',
+        		   url: '/openerp/comments',
+        		   async: false,
+        		   data:'<comment articleid="'+articleid+'"><email>333333@qq.com</email><content>测试评论内容</content></comment>',
+        		   success: function(data){
+                       ok($(data).find('comment').length>0,"评论_pass!");
+                       ok($(data).find('comment').attr('id')>0,"评论返回值ID_pass!");
+					   commentsid = $(data).find('comment').attr('id');
+
+        		   }
+		        });
+
+				  //某篇文章的评论
+	            $.ajax({                        
+        		   type: 'GET',
+        		   url: '/openerp/comments/'+articleid,
+                   async: false,
+        		   success: function(data){
+                       ok(true,"某文章的评论_pass!");
+                       $(data).find('comment').each(function(){
+                          ok($(this).attr('aid') == articleid,"某文章的id_pass!")
+                          ok($(this).attr('id') == commentsid,'某文章的评论id_Pass!');
+                          ok($(this).children('email').text()=='******@qq.com','文章评论的邮箱_pass!');   //这里对邮箱进行过处理所以返回的值与输入的值不同
+                          ok($(this).children('content').text() == '测试评论内容','文章评论的内容_pass!');
+                          ok($(this).children('ctime').text()!=null,"文章评论的时间_Pass!");
+                       })
+        		   }
+		        });
+                   //最近评论
+				  $.ajax({                        
+        		   type: 'GET',
+        		   url: '/openerp/latelycomments',
+        		   async: false,
+        		   success: function(data){
+                         ok($(data).find('comment').length>0,"最近评论_pass!");
+                         ok($(data).find('comment').attr('id')>0,"最近评论的ID_pass!");
+                         ok($(data).find('email').length>0,"最近评论的邮箱_pass!");
+                         ok($(data).find('content').length>0,"最近评论的内容_pass!");
+                         ok($(data).find('ctime').length>0,"文章评论的时间_Pass!");
+        		   }
+		        });
+                //拿到博客的总记录数
+                $.ajax({
+        		   type: 'GET',
+        		   url: '/openerp/articlecount',
+        		   async: false,
+        		   success: function(data){
+                         ok($(data).find('count').text()>0,"博客总记录数_pass!");
+        		   }
+		        });
+                //拿到当前文章下面的评论条数
+                $.ajax({
+        		   type: 'GET',
+        		   url: '/openerp/commentcount/'+articleid,
+        		   async: false,
+        		   success: function(data){
+                        ok($(data).find('count').text()==1,'某文章的评论总数_Pass!');
+        		   }
+		        });
+
+				//删除评论
+				$.ajax({
+        		   type: 'DELETE',
+        		   url: '/openerp/comments/'+commentsid,
+        		   async: false,
+        		   success: function(data){
+        		      ok(true,"删除评论_pass!");
+					  ok($(data).find('comment').attr('id')== commentsid,"删除评论ID返回值_pass!");
+       		       }
+		        });
+
+				//删除博客
+			    $.ajax({
+				   type: 'DELETE',
+        		   url: '/openerp/article/'+articleid,
+        	       async: false,
+        		   success: function(data){
+        			ok(true,"删除博客验证_pass!");
+					ok($(data).find('article').attr('id')==articleid,"删博客ID_pass!");
+        		   }
+			    });
+
+
+
+		});
+
+});
+  </script>
+
+</head>
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿#main {font-family:"微软雅黑";height:564px;}
+#account {width:960px;margin:0 auto;background:#fff;height:556px;overflow:hidden;}
+
+#left-column {width:485px; float:left;}
+.banner-image {padding-top:50px; margin-left:45px;}
+#right-column {float:right; width:435px;}
+#right-column .reg-img-des {padding-top:50px; height:50px;}
+
+.account-box {border-left:1px solid #d5d5d5;width:393px;border-top:1px solid #d5d5d5;width:393px;border-right:1px solid #d5d5d5;width:393px;border-bottom:3px solid #d5d5d5;}
+.account-box .text {box-shadow:inset 0 1px 3px -1px rgba(0,0,0,0.1);border:1px solid #d0d0d0; font-family:tahoma,arial;padding-top:6px;padding-bottom:6px;color:#333;font-size:16px;padding-left:5px;}
+.account-box .text:focus{box-shadow:0 0 3px rgba(86,180,289,0.3);border:1px solid #56b4ef;}
+.account-box label {font-size:14px;width:90px;margin-right:-10px;line-height:30px;font-size:16px;color:#999;display:inline-block;}
+.account-box .protocol a{color:#67b55e;}
+.account-box .protocol {color:#999;}
+
+#reg-box ul li {background:#f8f7f7;color:#acacac;text-align:center;width:50%;height:39px;border-bottom:1px solid #d5d5d5;float:left;font-size:18px;line-height:36px;cursor:pointer;}
+#reg-box ul li.last {float:right;border-left:1px solid #d3d3d3;margin-left:-1px;}
+#reg-box ul .current {border-bottom:1px solid #d5d5d5; background:#fff; color:#67b55e; border:0 none transparent; height:39px;}
+
+#reg-box .get-code {margin-left:6px;border-radius:2px;box-shadow:0 1px 1px #fff inset;display:inline-block;font-size:12px;color:#67b55e;height:30px;line-height:30px;padding:0 5px;background:#efefef;border:1px solid #cfcfcf;vertical-align:top;}
+#reg-box .get-code:hover {background:#f3f3f3;}
+body #reg-box .disable:hover {background:#f8f7f7;}
+.account-box .msg {height:20px;margin-top:10px;color:#f66;margin-left:125px;font-size:14px;}
+#reg-box #captcha {height:32px;vertical-align:bottom;}
+
+#login-box {margin-top:50px;}
+#login-box .msg {margin-left:75px;}
+#login-box .text-des {margin-left:25px;margin-top:15px;font-size:18px;color:#67b55e;font-weight:normal;}
+#login-box label {width:50px;}
+#login-box .fl {margin-left:74px;display:inline;vertical-align:bottom;color:#999;}
+#login-box .fr {margin-right:50px;display:inline;vertical-align:bottom;}
+#login-box .fr a {color:#999;}
+#login-box .fr a:hover {text-decoration:underline;}
+#login-box .other {font-weight:normal;margin-left:74px;color:#666;margin-top:18px;margin-bottom:16px;}
+#login-box .sp {border-left:0 none transparent;border-right:0 none transparent;height:0;overflow:hidden;border-bottom:0 none transparent;border-top:1px dotted #bfbfbf;margin:20px 8px 15px 8px;}
+#login-box .nohave {margin-left:74px;color:#666;font-weight:normal;}
+#login-box .reg-btn a {border:1px solid #dadada;color:#dd621f;cursor:pointer;text-align:center;margin-top:12px;margin-bottom:25px;box-shadow:0 1px 1px #f0f0f0;border-radius:3px;outline:0 none;font-family:"微软雅黑";cursor:pointer;display:inline-block;font-size:16px; color:#327b38;line-height:42px; width:275px; height:42px; color:#327b38; }
+
+.other-login {margin-left:74px;}
+.other-login a {margin-left:1px; width:91px; height:36px; display:inline-block;}
+.other-login .other-sina {background-position:0 0;}
+.other-login .other-sina:hover {background-position:0 -40px;}
+.other-login .other-qq {background-position:0 -80px;}
+.other-login .other-qq:hover {background-position:0 -120px;}
+.other-login .other-xiaomi {background-position:0 -160px;}
+.other-login .other-xiaomi:hover {background-position:0 -200px;}
+
+.w234 {width:224px;}
+.w138 {width:138px;}
+.w73 {width:73px;}
+.w268 {width:268px;}
+.ml74 {margin-left:74px;}
+.tc {text-align:center;}
+.vb {vertical-align:bottom;}
+
+.mt18 {margin-top:18px;}
+.ml45 {margin-left:45px;}
+.mt15 {margin-top:15px;}
+.ml25 {margin-left:25px;}
+.mb15 {margin-bottom:15px;}
+a:focus {outline:none;}
+
+#reg-box ul li.last {margin-left:-3px;}
+
+#main .account-box .placeholder {padding-left:5px;width:200px;}
+.dil {display:inline-block;}

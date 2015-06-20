@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app" class="ng-app:app" id="ng-app">
+  <head>
+    <meta charset="utf-8">
+    <meta property="wb:webmaster" content="47ffbbf8f2d7f227" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="">
+    <meta name="author" content="Chinfeng Chung">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="css/login.css" rel="stylesheet">
+    <title>登录</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><b><span style="color:#FFF">紫微星</span><span style="color:#F00">系列</span></b></a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#">花卉/产品</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">业务合作</a></li>
+                <li><a href="#">人才招聘</a></li>
+				<li><a href="helpme.html">联系我们</a></li>
+				<li><a href="#">解决方案</a></li>
+				<li  class="active">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">菜单 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">地图导航</a></li>
+                    <li><a href="#">B</a></li>
+                    <li class="divider">C</li>
+                    <li class="dropdown-header">D</li>
+                    <li><a href="#">E</a></li>
+                    <li><a href="#">F</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="nav navbar-nav navbar-right" nav-sign  ng-controller="signCntl" ng-cloak></div>
+              <!--<div class="nav navbar-nav navbar-right" ng-if="passport == null" ng-include="'signin.inc.html'"></div>-->
+              <!--<div class="nav navbar-nav navbar-right" ng-if="passport != null" ng-include="'passport.inc.html'"></div>-->
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+
+      <div class="row featurette" align="center">
+        <!--login-->
+			<body>
+			<form>
+		    <table>
+			<tr valign="bottom">
+			     <td valign="bottom">
+				  <label for="login">Name/Email:</label></td><td>
+				  <input type="text" name="login" onkeyup="checkGroupName()" id="login"/>
+				 </td>
+                 <td rowspan="2">
+					<button type="button" class="login-button">Login</button>
+				 </td>
+			 </tr>
+			 <tr valign="bottom">
+				 <td valign="bottom">
+				  <label for="password">Password:</label></td>
+                  <td>
+				  <input type="password" name="password" onkeyup="checkGroupName()" id="password"/>
+
+				</td>	
+			 </tr>
+			</form>
+			</body>
+			
+	  </div>
+	  </div>
+      <!-- /END THE FEATURETTES -->
+      <!-- FOOTER -->
+      
+
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+    <script src="js/angular.min1.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/sohobiz-common.js"></script>
+    <script src="js/sohobiz-index.js"></script>
+    <script type="text/javascript">
+	 function checkGroupName() {
+            var reg = /^([0-9a-zA-Z])|([\u4e00-\u9fa5])$/;
+            var str1 = $('#login').val();
+            if (!reg.test(str1)) {
+                $('#login').val("");
+                console.log("对不起，你输入的内容含有非法字符！");
+            }
+			var str = $('#password').val();
+			if (!reg.test(str)) {
+                $('#password').val("");
+                console.log("对不起，你输入的内容含有非法字符！");
+            }			
+      }
+	 
+	</script>
+  </body>
+</html>

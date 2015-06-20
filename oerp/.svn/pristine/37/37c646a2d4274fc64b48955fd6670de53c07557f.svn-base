@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>博客列表</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" media="all" />
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
+<!--<script src="//code.jquery.com/jquery-1.9.1.js"></script>-->
+<!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+<script  type="text/javascript" language="javascript" src="/ckeditor/ckeditor.js"></script>
+<script  type="text/javascript" src="/ckeditor/config.js"></script>
+<script type="text/javascript" src="js/ajaxfileupload.js"></script>
+
+<script type="text/javascript">
+var lastPage=0;
+var mun;
+$(function(){
+findlistBolg();
+});
+//查询博客列表
+function findlistBolg(){
+$.ajax({
+		   type:'GET',
+		   url: '/openerp/articles',
+		   success:function(date){
+			$("#findBolg tr:not(#bolg)").remove();
+		    $(date).find("article").each(function(){
+			        var id = $(this).attr("id");
+		            var title = $(this).children("title").text();
+					var tag = $(this).children("tag").text();
+				    var atime = $(this).children("atime").text();
+				    var content = $(this).children("content").text();
+				    $("#findBolg").append("<tr><td>"+id+
+					"</td><td data-title="+id+">" +title+
+					"</td><td data-tag="+id+">" +tag+
+					"</td><td>" +atime+
+					"</td><td data-content="+id+"><div style='height:200px; width:550px;overflow:scroll;'>"+ content+
+					"</div></td><td><a href='javascript:deleteBolg("+id+");'>删除</a>&nbsp;&nbsp;<a href='javascript:dialog("+id+");'>修改</a>&nbsp;&nbsp;<a href='comments.html?mip="+id+"'>查看</a></td></tr>");
+				   });
+
+		    	}
+		   });
+}
+//删除博文
+function deleteBolg(id){
+$.ajax({
+		   type:'DELETE',
+		   url: '/openerp/article/'+id,
+		   success:function(date){
+			  location.href="/ListBolg.html";
+			}
+		   
+		  });
+
+}
+
+function dialog(id){
+    getarticle(id);
+    findListIamges();
+    CKEDITOR.replace('section2');//清空插件里面的内容
+    if (CKEDITOR.instances['section2']) {
+        CKEDITOR.instances['section2'].destroy();
+    }
+
+
+
+    $( "#dialog_message" ).dialog({
+        modal: true,
+	    height:600,
+	    width:1000,
+        buttons: {
+        '修改': function() {
+          updateBolg(id);
+		  $(this).dialog("close");
+        }
+      }
+    });
+}
+function getarticle(id){
+            $.ajax({
+               type:'GET',
+               url: '/openerp/article/'+id,
+               success:function(date){
+
+                $("#left_read tbody").remove();
+                $(date).find("article").each(function(){
+			        var id = $(this).attr("id");
+				    var atime = $(this).children("atime").text();
+
+                    $("#dialog_message input[name='title']").val( $(this).children("title").text());
+                    $("#dialog_message input[name='tag']").val($(this).children("tag").text());
+                     $("#section2").val($(this).children("content").text())
+
+                        CKEDITOR.replace('section2');//清空插件里面的内容
+                        CKEDITOR.instances.section2.setData($(this).children("content").text());
+
+				   });
+		    	}
+		   });
+
+};
+
+
+
+
+
+//修改博文
+function updateBolg(id){
+    doc = $.parseXML('<article/>');  
+	$(doc).find("article").attr("pid",id);
+    doc.documentElement.appendChild(create_node('title', $("#dialog_message input[name='title']").val()));
+	doc.documentElement.appendChild(create_node('tag',$("#dialog_message input[name='tag']").val()));
+	doc.documentElement.appendChild(create_node('content',CKEDITOR.instances.section2.getData()));  
+    xmldocument = new XMLSerializer().serializeToString(doc);  
+	$.ajax({
+			   type:'PUT',
+			   url: '/openerp/article/'+id,
+			   data:xmldocument,
+			   success:function(date){
+				  location.href="/ListBolg.html";
+				}
+			   
+			  });
+
+}
+function create_node(tag, name) {
+      e = doc.createElement(tag);
+      e.appendChild(doc.createCDATASection(name));
+      return e;
+    }
+	
+
+//取博客总数
+$(function(){
+$.ajax({
+		   type:'GET',
+		   url: '/openerp/articlecount',
+		   success:function(date){
+		   mun = $(date).text();
+			count($(date).text()); 
+			 }
+		   
+		   });
+
+});
+//分页
+function count(count){
+var  munbers=Math.ceil(count/10);
+if(munbers!=0){
+ var number=1;
+       for(var i=0;i<munbers;i++){
+			 $("#page").append("<a href='javascript:listBolg("+i+")'>"+number+"</a>&nbsp;&nbsp;");
+			 number++;
+			}
+		}
+}
+//上一页
+function firstPage(){
+	if(lastPage==0){
+		 $("#pgup").addClass("page");
+		 $("#pgdn").removeClass("page");
+	}else{
+	        $("#pgup").removeClass("page");
+			$("#pgdn").removeClass("page");
+		    var pgup=lastPage-1;
+			listBolg(pgup);
+		}
+}
+//下一页
+function lastPages(){
+	var  last = lastPage+1;
+	if(last==Math.ceil(mun/10)){
+		  $("#pgdn").addClass("page");
+		  $("#pgup").removeClass("page");
+
+	}else{
+	      $("#pgdn").removeClass("page");
+		  $("#pgup").removeClass("page");
+	      var pgdn=lastPage+1;
+		  listBolg(pgdn);
+	
+	}
+}
+function listBolg(page){
+lastPage=page;
+$.ajax({
+		   type:'GET',
+		   url: '/openerp/articles?pagesize=10&pagenumber='+page,
+		   success:function(date){
+		   $("#findBolg tr:not(#bolg)").remove();
+			 $(date).find("article").each(function(){
+			        var id = $(this).attr("id");
+		            var title = $(this).children("title").text();
+					var tag = $(this).children("tag").text();
+				    var atime = $(this).children("atime").text();
+				    var content = $(this).children("content").text();
+				    $("#findBolg").append("<tr><td>"+id+
+					"</td><td data-title="+id+">" +title+
+					"</td><td data-tag="+id+">" +tag+
+					"</td><td>" +atime+
+					"</td><td data-content="+id+"><div style='height:200px; width:550px;overflow:scroll;'>"+ content+
+                    "</div></td><td><a href='javascript:deleteBolg("+id+");'>删除</a>&nbsp;&nbsp;<a href='javascript:dialog("+id+");'>修改</a>&nbsp;&nbsp;<a href='comments.html?mip="+id+"'>查看</a></td></tr>");
+				   });
+
+		    	}
+		   });
+
+}
+//上传图片
+function upload() {
+    $.ajaxFileUpload({
+        fileElementId: 'file',
+        url: '/openerp/upload',
+        success: function(data) {
+             console.log($(data).find("image").attr("src"));
+             $("#imagesShow").text("上传成功").css({"color":"red"});
+            findListIamges();
+       },error: function(XMLHttpRequest, textStatus, errorThrown) {
+             $("#imagesShow").text("上传失败").css({"color":"red"});
+       }
+    });
+}
+function addsection(){
+//CKEDITOR.instances.editor2.insertHtml('<img src='+$("#images").val()+'>')
+var element = CKEDITOR.dom.element.createFromHtml( '<img src='+$("#images").val()+'>' );
+CKEDITOR.instances.section2.insertElement( element );
+}
+//查看图片列表
+function findListIamges(){
+	$.ajax({
+		   type:'GET',
+		   url: '/openerp/myimg',
+		   success:function(date){
+               	$("#images option").remove();
+                $(date).find("images").children("image").each(function(){
+                        var names = $(this).text();
+                        var name = $(this).text();
+                        var pa = $('<option />');
+                        pa.text(names);
+                        pa.val(name);
+                        $("#images").append(pa);
+                       });
+
+                    }
+		   });
+}
+</script>
+	<style type="text/css">
+	  body {
+		padding-bottom: 40px;
+	  }
+	  .sidebar-nav {
+		padding: 9px 0;
+	  }
+	  
+	  
+	  .container-fluid {
+  padding-right: 20px;
+  padding-left: 20px;
+  *zoom: 1;
+}
+	</style>
+		
+</head>
+
+<body>
+<div class="container-fluid">
+		<div class="row-fluid">
+            <div id="content" class="span10">
+			<!-- content starts -->
+			<div class="row-fluid sortable">		
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2 style="margin-top:0px;">博客列表</h2>
+						<div class="box-icon">
+						</div>
+					</div>
+				  <div class="box-content">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable" id="findBolg">
+							  <tr id="bolg">
+							      <th>编号</th>
+								  <th>标题名字</th>
+								  <th>标签</th>
+								  <th>时间</th>
+								  <th>内容</th>
+								  <th>操作</th>
+							  </tr>
+					  </table>       
+					  <table cellpadding="0" cellspacing="0" align="center">
+							<tbody><tr>
+								<td>
+									<div class="viciao"><a href="javascript:firstPage();" id="pgup">上一页</a></span><span id="page"></span><a href="javascript:lastPage()" id="pgdn">下一页</a></div>
+								</td>
+							</tr>
+						</tbody></table>     
+				  </div>
+				</div>
+			
+			</div>
+					
+		  </div>
+  </div>
+		
+</div>		
+<div id="dialog_message" title="确认修改" style="display:none">
+  <p>
+    标题：<input type="text" name="title">
+  </p>
+    <p>
+    标签：<input type="text" name="tag">
+  </p>
+    <p>
+    <form enctype="multipart/form-data">
+    <!--上传图片-->
+    <input type="file" name="file" id="file" style='width:150px;height:25px;'/>&nbsp;&nbsp;
+    <input type="button" value="上传" style='width:150px;height:25px;'   onclick="upload()"/>
+    </form>
+    <span id="imagesShow"></span>
+    <label>图片
+    <select style='width:150px;height:35px;' id="images">&nbsp;&nbsp;<input type="button" style='width:150px;height:25px;' value="插入" onclick="addsection();" ></select>
+    </label>
+  <p>
+	<textarea name="section2" id="section2"></textarea>
+   <!--<div id="editor1">-->
+        <!--<script>CKEDITOR.appendTo('editor1',null);</script>-->
+    <!--</div>-->
+  </p>
+</div>
+</body>
+</html>

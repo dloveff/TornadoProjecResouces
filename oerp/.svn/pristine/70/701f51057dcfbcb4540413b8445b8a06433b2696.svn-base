@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html class="no-js no-touch no-touch">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>OpenERP - 客户关系管理（CRM）</title>
+<link rel="stylesheet" href="css/common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="css/website.css" type="text/css" media="all" /> 
+<link rel="stylesheet" href="css/stylesheet.css" type="text/css" media="all" /> 
+      </head>
+    <body class="oe_styling_v8">
+	
+        <div class="oe_website_contents">
+            
+    <header class="oe_website_header">
+        <div class="oe_row oe_fit">
+            <div class="oe_span3 oe_logo_menu">
+                <a href="#" class="ab_menu_logo">
+                    <img class="oe_logo_img" alt="OpenERP: Open Source Business Apps" src="images/logo_oe_top_old_and_small.png">
+                </a>
+            </div>
+            <!--导航栏-->
+            <nav class="oe_span9 oe_right oe_top_menu" id="top-menu">
+                                  <div class="oe_top_menu_entry"><a class="ab_menu_apps" href="index.htm">首页</a></div>
+                <div class="oe_top_menu_entry"><a class="ab_menu_partners" href="OpenERP-Servers.html">服务</a></div>
+                <div class="oe_top_menu_entry"><a class="ab_menu_freetrial" href="Blog.htm">博客</a></div>
+                <div class="oe_top_menu_entry"><a class="ab_menu_contact" href="OpenERPHelpMe.html">联系我们</a></div>
+                <div class="oe_top_menu_entry"><a class="ab_menu_signin" href="#">登录</a></div>
+            </nav>
+        </div>
+    </header>
+     
+
+            <!--[if lt IE 7]>
+            <p class="chromeframe">
+               You are using an <strong>outdated</strong> browser. 
+               Please <a href="http://browsehappy.com/">upgrade your browser</a> or 
+               <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> 
+               to improve your experience.</p>
+            <![endif]-->
+            
+    <article class="oe_page">
+        
+
+
+    
+
+      <section class="oe_container">
+    <!-- <div class="inner">
+        <h1 class="title" align="center"></h1>
+        <div style="padding: 50px 0 0 0">
+            <div class="text_content" >
+                <p style="padding: 0 0 20px 0">这是一种先进的OpenERP项目实施。
+我们根据您的公司特殊需求提供定制的工作流程，业务流程，报告，文件，模块等。让系统适应你！(我们通常不建议您这样做）</p>
+               
+            </div>
+        </div>-->
+
+        <h1 class="title" align="center">系统分析</h1>
+		 <div style="padding: 50px 0 0 0">
+            <div class="text_content" >
+                <p style="padding: 0 0 20px 0">			
+为您提供最专业化的分析和评估，将OpenERP项目的风险最小化，在项目过程中，内部和外部资源之间的合作将是无缝的
+           </div>
+        </div>
+		  <h1 class="title" align="center">信息化咨询</h1>
+				<div style="padding: 50px 0 0 0">
+					<div class="text_content" >
+						<p style="padding: 0 0 20px 0">
+
+我们拥有丰富的经验，可以为您提供专业化的咨询协助贵公司管理层引导和实现改革，包括流程绘图、ERP分析、会计重组、信息系统基础设施设计、等等、、、 
+		  </div>
+	    </div>
+
+
+  <h1 class="title" align="center">系统设计</h1>
+        <div style="padding: 50px 0 0 0">
+            <div class="text_content"  align="center">
+            
+根据您的要求提供最经济最有效的硬件基础设施和最适合您的ERP软件系统设计方案！
+      </div>
+        </div>
+
+     <h1 class="title" align="center">业务配置</h1>
+        <div style="padding: 50px 0 0 0">
+            <div class="text_content"  align="center" >
+数据迁移、权限控制、数据安全和备份、参数和系统设置
+      </div>
+        </div>
+
+     <h1 class="title" align="center" >个性化服务</h1>
+        <div style="padding: 50px 0 0 0">
+            <div class="text_content"  align="center">
+               
+帮您的ERP解决数据迁移、权限控制、数据安全和备份、参数和系统设置的困扰
+      </div>
+        </div>
+
+     <h1 class="title" align="center">培训</h1>
+        <div style="padding: 50px 0 0 0">
+            <div class="text_content" align="center">
+   <p>为您量身定制专业的培训课程和培训计划
+   <div>
+		<ul>
+			<lo>第一天:1、从启动板获取源代码 2、系统安装 3、界面 4、管理</lo>
+			<lo>第二天:1、OpenERP架构 2、所有对象 3、定义一个简单的对象 4、XML格式 5、查看简介</lo>
+			<lo>第三天:1、更多界面上的详细内容：继承，高级标签…2、自定工作流程和原理</lo>
+			<lo>第四天:1、定制原理和报告  2、向导定制 3、操作定制</lo>
+			<lo>第五天:1、网络服务 2、Python的范例 3、	Rudy的范例 </lo>
+		</ul>
+	</div>
+      </div>
+        </div>
+	    <h1 class="title" align="center">联系我们的顾问可以获取详细信息</h1>
+        <div style="padding: 50px 0 0 0">
+            <div class="text_content" >
+	<p>技术支持 & 维护服务套餐
+	为什么选择OpenERP技术支持 & 维护服务套餐\解决问题最快捷的方式\OpenERP专家的专业意见
+	性价比最高，低预算并且可以自己实施项目\
+	免费发行协同编辑以及问题解决的跟踪系统，可以在系统中查到常见问题清单\
+	支持范围广\可以完成简单的定制化任务\一旦到期可以立刻续约
+
+
+		     </div>
+        </div>
+
+
+
+  </div>
+</section>
+
+    </article>  
+          
+        <footer class="oe_website_footer">
+        
+			<div align="center">
+				<span style="font-family:Arial;">佛山领风羊电子商务有限公司-----联系电话：13392262602   联系人：钟先生  </span>
+			</div>
+
+        </footer>
+        
+
+</body></html>

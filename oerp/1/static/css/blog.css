@@ -1,0 +1,36 @@
+body {text-align:left;font-family:"����",Arail;background:#ffffff;font-size:12px;}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,blockquote{padding:0; margin:0;}   
+table,td,tr,th{font-size:12px;}
+li{list-style-type:none;}
+table{ margin:0 auto;}
+img{vertical-align:top;border:none;}
+ol,ul {list-style:none;}
+a {color:#000000;text-decoration:none;}
+a:visited {color:#000000;text-decoration:none;}
+a:hover {color:#000000;text-decoration:underline;}
+a:active {color:#000000;}
+
+.g_login_input{ height:17px; width:100px;}
+.g_search_keyword{ height:17px; width:150px}
+.g_search_btn{ margin-top:2px;}
+
+
+.user_login_tb{ background-color:#FFFFFF; border:1px #adafb8 solid}
+.blog_login_input{ height:21px; width:180px; border:1px #CCCCCC solid; padding-top:2px;}
+.blog_login{ margin-top:4px; background-color:#FFFFFF}
+.left_link,a.left_link:link,a.left_link:visited{color:#2971bb; font-size:14px;}
+.user_login1{ text-align:left; padding-left:10px; font-weight:bold; color:#666666; font-size:14px;}
+.user_login2{ text-align:right; padding-right:10px;}
+
+.login_right{ background-position:right; background-repeat:no-repeat}
+.login_right,.login_right a:link,.login_right a:visited{ color:#2e3092}
+
+/*����*/
+#floatBoxBg{width:100%;height:100%;background:#000;filter:alpha(opacity=50);opacity:0.5;position:absolute;top:0;left:0;}
+.floatBox{border:#666 5px solid;width:300px;position:absolute;top:50px;left:40%;}
+.floatBox .title{height:23px;padding:7px 10px 0;background:#333;color:#fff;}
+.floatBox .title h4{float:left;padding:0;margin:0;font-size:14px;line-height:16px;}
+.floatBox .title span{float:right;cursor:pointer;}
+.floatBox .content{padding:20px 15px;background:#fff;}
+
+.center_table{ margin-top:10px; border-bottom:1px #CCCCCC dotted}
