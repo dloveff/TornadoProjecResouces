@@ -1,0 +1,67 @@
+
+<!doctype html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>新闻</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" href="css/jquery.mobile-1.4.0-rc.1.min.css" />
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="js/jquery.mobile-1.4.0-rc.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+      find_article();
+});
+function find_article(){
+    $.ajax({
+    type:'GET',
+    url:'/mod/cms/mparticles',
+    success:function(data){
+        $(data).find('article').each(function(){
+            var id = $(this).attr('id');
+            var title =$(this).children('title').text();     //标题
+            var datatime = $(this).children('dt').text();    //时间
+            var priority = $(this).children('priority').text();  //优先级
+            var summary = $(this).children('summary').text();  //概述
+            var thumb = $(this).children('thumb').text();      //缩略图
+            var enabled = $(this).children('enabled').text();    //授权
+            var tags;
+            $(this).children('tag').each(function(){
+                 tags=$(this).attr('name');
+            });
+            $("#abody").append("<tr id='"+id+"'>"
+                    +"<td>"+ title +"</td>"
+                    +"<td>"+ datatime +"</td>"
+                    +"<td>"+ priority +"</td>"
+                    +"<td>"+ summary +"</td>"
+                    +"<td>"+ thumb +"</td>"
+                    +"<td>"+ enabled +"</td>"
+                    +"<td>"+ tags +"</td>"
+                    +"</tr>");
+        });
+      }
+    });
+}
+
+</script>
+</head>  
+<body>  
+<div data-role="page" id="demo-page" data-theme="a" data-url="demo-page">
+    <div  role="main" data-role="content">
+    <table id="mpcms_article">
+       <tr><th>标题</th><th>时间</th><th>优先级</th><th>概述</th><th>缩略图</th><th>权限</th><th>标签</th></tr>
+       <tbody id="abody">
+
+
+       </tbody>
+
+    </table>
+
+
+
+
+    </div>
+</div>
+</div>  
+</body>  
+</html>  

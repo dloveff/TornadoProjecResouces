@@ -1,0 +1,27 @@
+/**
+ * Created by 北极鱼 on 14-1-17.
+ */
+
+
+function findaddress(){
+    $.ajax({
+        type:'GET',
+        url: '/loc ',
+        success:function(date){
+           $(date).find('location').each(function(){
+               var id = $(this).attr('priority');
+               var name =$(this).children("name").text();
+               var longitude = $(this).find('lon').text(); //经度
+               var latitude = $(this).find('lat').text();   //维度
+               $("#"+id+"").append('<td>'+name+'</td>'
+                   +'<td>+ longitude +</td>'
+                   +'<td>'+ latitude +'</td>'
+               )
+           });
+        }
+    });
+}
+
+
+
+

@@ -1,0 +1,7 @@
+<!DOCTYPE html> <html lang="en"> <head> <meta charset="utf-8">
+</head><body><form action="/login" method="post">Token: <input type="text"
+name="token"/><input type="submit" value="登陆"/>
+<input type="hidden" name="next" value="{{ escape(next) }}"/>
+</form>
+<p>提示：使用token登陆，管理员使用adminstrator登陆</p>
+</body></html>

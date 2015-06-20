@@ -1,0 +1,36 @@
+import tornado.web, meta, auth
+import xml.etree.ElementTree as ET
+from db import Mysqldb, log
+class UploadMemberHandler(tornado.web.RequestHandler):
+    __metaclass__ = meta.HandlerMetaClass
+    route = r'/upload'
+    def post(self):
+        dao = UploadDao()
+        root = ET.fromstring(self.request.body)
+        images = root.find('images').text
+        uid = root.find('uid').text
+        if images is not None:
+            dao.create_images(images, uid)
+            self.set_header('Content-Type', 'text/xml; charset=utf-8')
+            self.write('<images/>' )
+
+class   UploadDao(object):
+    def __init__(self):
+        self.db = Mysqldb()
+        self.__create_table(self.db)
+
+    def __create_table(self, db):
+        db.execute('''
+            CREATE TABLE IF NOT EXISTS weicbd_account_images (
+                id bigint NOT NULL AUTO_INCREMENT,
+                images varchar(255) NOT NULL,
+                PRIMARY KEY (id),
+                FOREIGN KEY (imageid) REFERENCES weicbd_account(id)
+
+            ) DEFAULT CHARACTER SET=utf8;
+        ''')
+    def create_images(self, images, uid):
+        images = self.db.execute(
+            'insert into weicbd_account_images(images,uid) values(%s,%d)',(images,uid))
+        self.db.commit()
+        return images

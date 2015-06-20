@@ -1,0 +1,301 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>商品购物车</title>
+<link rel="stylesheet" type="text/css" href="css/base.css">
+	<link rel="stylesheet" type="text/css" href="css/layout.css">	
+	<link rel="stylesheet" type="text/css" href="css/count.css">
+<style type="text/css">
+ body{
+   font-size: 12px;
+ }
+ #top{
+   width: 100%;
+   height: 125px;
+ }
+
+ #context{
+   width: 997px;
+   margin-bottom: 20px;
+   margin-top:-50px;
+ }
+ #xia{
+    margin-top:10px;
+    width: 997px;
+ }
+
+ a{
+   color: #1d94f0;
+   
+ }
+ b{
+    color: #b0b0b0;
+ }
+
+ td{
+   padding-top: 8px;
+   padding-bottom: 8px;
+ }
+  .gou-sub{
+   font-size:15px;
+   font-weight:bolder;
+   width: 120px;
+   height: 36px;
+   background-color: #bc7639;
+   color: white;
+ }
+   .gou-sub:hover{
+    border:1px solid gray;
+ }
+
+#zhong ul{
+  float: left;
+  margin-left:-3px;
+  text-align: left;
+}
+ul{
+    list-style-type: none;
+}
+  .jia-sub{
+   font-size:15px;
+   font-weight:bolder;
+    width: 120px;
+    height: 32px;
+    background-color: #b20000;
+    color: white;
+ }
+   .jia-sub:hover{
+    border:1px solid gray;
+  }
+
+  #caozuo ul li{
+     float: left;
+     margin-left: 20px;
+     margin-top: -10px;
+  }
+ a{
+    color: #78706d;
+ }
+ a:hover{
+   color: #9f0e13;
+ }
+#tab tr td{
+   text-align: center;
+}
+  .jie-sub{
+   font-size:15px;
+   font-weight:bolder;
+    width: 50px;
+    height: 22px;
+    background-color: #b20000;
+    color: white;
+ }
+   .jie-sub:hover{
+     background-color: #b92525;
+  }
+   #guanggao{
+  width: 997px;
+  height: 258px;
+  border: 1px solid #78706d;
+ margin-top: 10px;
+  } 
+  #guanggao ul{
+     float: left;
+     margin-left: 10px;
+  } 
+  
+  
+  .minus {
+border: 1px solid #dbdbdb;
+background: #fff;
+text-decoration: none;
+width: 11px;
+height: 11px;
+}
+.minuss{
+border: 1px solid #dbdbdb;
+background: #fff;
+text-decoration: none;
+width: 11px;
+height: 11px;
+}
+
+</style>
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+</head>
+<body>
+  <center>
+   <div id="top">
+  <div id="header">
+	<div class="mid w960">
+		<ul class="top-menu">
+		   <li><a data-ca="header-index" href="zhuye.html">手机后端<span class="arrow"></span></a></li>
+		    <li><a data-ca="header-100g" href="index.html">积分商城<span class="arrow"></span></a></li>	
+			<li class="select"><a data-ca="header-forum" href="#">购物车<span class="arrow"></span></a></li>
+			<li ><a data-ca="header-login" href="login.html">登录<span class="arrow"></span></a></li>
+			<li><a data-ca="header-reg" href="reg.html">注册<span class="arrow"></span></a>
+			</li>
+		</ul>
+	</div>
+</div>
+	</div>   
+	   <!-- 购物列表---------------- -->
+	        <div id="context">
+              <table border="0" width="992" id="tab" bgcolor="#e2f2ff">
+                 <tr id="htr" style="height: 40px;width: 992">
+                    <td width="50"><input type="checkbox" class="che"/>全选</td>
+                    <td width="117">商品</td>
+                    <td width="338">商城信息</td>
+                    <td width="117">单价(元)</td>
+                    <td width="117">数量</td>
+                    <td width="117">小计(元)</td>
+                    <td width="117">操作</td>
+                 </tr>
+				 <tr bgcolor="#FFFFFF">
+						<td width="50" valign="top">
+								<input type="checkbox">
+				   </td>
+							<td width="120">
+								<a href="#" class="img120" target="_blank">
+									<img src="imges/6.jpg" width="115" height="100">
+								</a>
+							</td>
+						
+							<td class="name" width="328px">
+								<a class="aGrey" href="#" target="_blank">蓝月亮 手洗专用洗衣液（薰衣草）500g/瓶</a><br>
+										<span class="f14 fb">商家名称</span>&nbsp;1号店
+										<em>¥15.5</em>
+							</td>
+							<td width="117">3000￥</td>
+							<td width="117">1</td>
+							<td width="117">3000￥</td>
+							  <td class="operate" width="117">
+								<a href="">移入收藏夹</a><br/>
+											<a href="#"><img src=""/></a>
+								<br/><a href="">删除</a>
+							</td>
+				</tr>
+				 <tr bgcolor="#FFFFFF">
+						<td width="50" valign="top">
+								<input type="checkbox">
+				   </td>
+							<td width="120">
+								<a href="#" class="img120" target="_blank">
+									<img src="imges/6.jpg" width="115" height="100">
+								</a>
+							</td>
+						
+							<td class="name" width="328px">
+								<a class="aGrey" href="#" target="_blank">蓝月亮 手洗专用洗衣液（薰衣草）500g/瓶</a><br>
+										<span class="f14 fb">商家名称</span>&nbsp;1号店
+										<em>¥15.5</em>
+							</td>
+							<td width="117">3000￥</td>
+							<td width="117">1</td>
+							<td width="117">3000￥</td>
+							  <td class="operate" width="117">
+								<a href="">移入收藏夹</a><br/>
+											<a href="#"><img src=""/></a>
+								<br/><a href="">删除</a>
+							</td>
+				</tr>
+				 <tr bgcolor="#FFFFFF">
+						<td width="50" valign="top">
+								<input type="checkbox">
+				   </td>
+							<td width="120">
+								<a href="#" class="img120" target="_blank">
+									<img src="imges/6.jpg" width="115" height="100">
+								</a>
+							</td>
+						
+							<td class="name" width="328px">
+								<a class="aGrey" href="#" target="_blank">蓝月亮 手洗专用洗衣液（薰衣草）500g/瓶</a><br>
+										<span class="f14 fb">商家名称</span>&nbsp;1号店
+										<em>¥15.5</em>
+							</td>
+							<td width="117">3000￥</td>
+							<td width="117">1</td>
+							<td width="117">3000￥</td>
+							  <td class="operate" width="117">
+								<a href="">移入收藏夹</a><br/>
+											<a href="#"><img src=""/></a>
+								<br/><a href="">删除</a>
+							</td>
+				</tr>
+				 <tr bgcolor="#FFFFFF">
+						<td width="50" valign="top">
+								<input type="checkbox">
+				   </td>
+							<td width="120">
+								<a href="#" class="img120" target="_blank">
+									<img src="imges/6.jpg" width="115" height="100">
+								</a>
+							</td>
+						
+							<td class="name" width="328px">
+								<a class="aGrey" href="#" target="_blank">蓝月亮 手洗专用洗衣液（薰衣草）500g/瓶</a><br>
+										<span class="f14 fb">商家名称</span>&nbsp;1号店
+										<em>¥15.5</em>
+							</td>
+							<td width="117">3000￥</td>
+							<td width="117">1</td>
+							<td width="117">3000￥</td>
+							  <td class="operate" width="117">
+								<a href="">移入收藏夹</a><br/>
+											<a href="#"><img src=""/></a>
+								<br/><a href="">删除</a>
+							</td>
+				</tr>
+				 <tr bgcolor="#FFFFFF">
+						<td width="50" valign="top">
+								<input type="checkbox">
+				   </td>
+							<td width="120">
+								<a href="#" class="img120" target="_blank">
+									<img src="imges/6.jpg" width="115" height="100">
+								</a>
+							</td>
+						
+							<td class="name" width="328px">
+								<a class="aGrey" href="#" target="_blank">蓝月亮 手洗专用洗衣液（薰衣草）500g/瓶</a><br>
+										<span class="f14 fb">商家名称</span>&nbsp;1号店
+										<em>¥15.5</em>
+							</td>
+							<td width="117">3000￥</td>
+							<td width="117">1</td>
+							<td width="117">3000￥</td>
+							  <td class="operate" width="117">
+								<a href="">移入收藏夹</a><br/>
+											<a href="#"><img src=""/></a>
+								<br/><a href="">删除</a>
+							</td>
+				</tr>
+              </table>
+			  <br>
+			   <br>
+			  <table border="0" width="992" id="tab" bgcolor="#FFFFFF">
+                 <tr id="htr" style="height: 40px;width: 992">
+                    <td width="50"><input type="checkbox" class="che"/>全选</td>
+                    <td><div align="left">&nbsp;&nbsp;<a href="">批量删除</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">批量移入收藏</a></div></td>
+                    <td width="300px"><div align="right">商品总价(不含运费)：￥<font color="red" size="4"><span class="zon">20000</span> </font></div></td>
+                    <td width="117"> <div align="right">
+                      <input type="button" value="结算" class="jia-sub" onClick="window.location.href='submitOrder.html'">
+                    </div></td>
+                 </tr>
+				 </table>
+		    </div><br>
+
+             
+             
+         <div id="guanggao">
+           <div style="width: 997px;height: 25px;text-align: left;border-bottom: 1px solid #78706d;font-weight: bolder;color: black;">商品推荐:</div>
+        </div>
+		<img src=""/>
+		<div>
+	         <iframe scrolling="no" frameborder="0" height="170" width="997"src=""></iframe>
+	     </div>
+   </center>
+</body>
+</html>

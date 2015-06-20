@@ -1,0 +1,200 @@
+
+<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="row-fluid sortable">
+				<div class="box span12">
+						<div class="box-content">
+							<table class="table table-striped table-bordered bootstrap-datatable datatable" id="mparticlelist">
+							  <tr id="titlist">
+                                  <th>&nbsp;</th>
+                                  <th>名称</th>
+                                  <th>地址</th>
+                                  <th>经度</th>
+                                  <th>纬度</th>
+                                  <th>缩略图全路径</th>
+
+							  </tr>
+                               <tbody id="addressbody">
+
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="1"/>1</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="2"/>2</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="3"/>3</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="4"/>4</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="5"/>5</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="6"/>6</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="7"/>7</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="8"/>8</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="9"/>9</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="hidden" name="priority" value="10"/>10</td>
+                                    <td><input type="text" name="name"/></td>
+                                    <td><input type="text" name="address"/></td>
+                                    <td><input type="text" name="lon"/></td>
+                                    <td><input type="text" name="lat"/></td>
+                                    <td><input type="text" name="thumb"/></td>
+                                </tr>
+
+                               </tbody>
+							</table>
+						</div>
+				</div>
+
+			</div>
+			</div>
+</div>
+<div id="dialog-console_module_address" >
+    <button onclick="save_locations()">保存</button>
+</div>
+
+<script type="text/javascript">
+findaddress();
+
+function findaddress(){
+    $.ajax({
+        type:'GET',
+        url: '/mploc/'+ $("#mpid").val(),
+        success:function(data){
+           $names = $('[name="name"]');
+           $address = $('[name="address"]');
+           $lon = $('[name="lon"]');
+           $lat = $('[name="lat"]');
+           $thumb = $('[name="thumb"]');
+           $('location', data).each(function () {
+               priority = $(this).attr('priority');
+               $names.eq(priority - 1).val($('name', this).text());
+               $address.eq(priority - 1).val($('address', this).text());
+               $lon.eq(priority - 1).val($('lon', this).text());
+               $lat.eq(priority - 1).val($('lat', this).text());
+               $thumb.eq(priority - 1).val($('thumb', this).text());
+           });
+        }
+    });
+}
+<<<<<<< .mine
+function console_address(id){
+     $("#dialog-console_module_address").dialog({
+          resizable: false,
+          height:220,
+          width: 600,
+          modal: true,
+          buttons: {
+              "保存": function() {
+                   $(this).dialog( "close" );    //关闭对话框
+                   $("#addressbody").empty();
+                   findaddress();
+              }
+          }
+      });
+}
+function save_address(){
+   var document = $.parseXML('<locations/>');   //根节点
+   var location1 = document.createElement("location");
+
+   location1.appendChild(create_address_node('name', null));
+=======
+function save_locations(){
+	doc = $.parseXML('<locations/>');
+
+    $names = $('[name="name"]');
+    $address = $('[name="address"]');
+    $lon = $('[name="lon"]');
+    $lat = $('[name="lat"]');
+    $thumb = $('[name="thumb"]');
+
+
+    for (i=0; i<10; i++) {
+        if($names.eq(i).val() != '') {
+            elm = doc.createElement('location');
+            doc.documentElement.appendChild(elm);
+            elm.setAttribute('priority', i+1);
+            elm.appendChild(create_node('name', $names.eq(i).val()));
+            elm.appendChild(create_node('address', $address.eq(i).val()));
+            elm.appendChild(create_node('lon', $lon.eq(i).val()));
+            elm.appendChild(create_node('lat', $lat.eq(i).val()));
+            elm.appendChild(create_node('thumb', $thumb.eq(i).val()));
+
+        }
+    }
+>>>>>>> .r4742
+
+    $.ajax({
+        type:'POST',
+        url: '/mploc/'+ $("#mpid").val(),
+        data: (new XMLSerializer().serializeToString(doc)),
+        success:function(){
+           alert('保存成功');
+        }
+    });
+
+	function create_node(tag, value) {
+		e = doc.createElement(tag);
+		e.appendChild(doc.createCDATASection(value));
+		return e;
+	}
+}
+
+</script>

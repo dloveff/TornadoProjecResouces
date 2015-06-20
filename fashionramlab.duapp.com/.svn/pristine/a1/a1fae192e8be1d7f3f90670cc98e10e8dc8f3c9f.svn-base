@@ -1,0 +1,28 @@
+/**
+ * Created by TsukiHiBoshi on 14-1-8.
+ */
+function findListTag(){
+    var mpid=$("#mpid").val();
+    $.ajax({
+        type:'GET',
+        url: '/mptags/'+mpid,
+        success:function(date){
+           arrfun(date);
+        }
+    });
+}
+
+function arrfun(date){
+  $(date).find("tags").each(function(){
+
+          $(this).children("tag").each(function(){
+              alert($(this).children("tag").attr("name"))
+              alert($(this).children("tag").attr("id"))
+
+          });
+
+	});
+
+
+
+}

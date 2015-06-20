@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Zhong Jinfeng">
+    {% include css.inc.html %}
+    <title>SOHOBIZ - 虚拟工作圈</title>
+
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">SohoBIZ</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="index.html">首页</a>
+                </li>
+                <li class="active">
+                    <a href="circles.html">工作圈</a>
+                </li>
+                <li>
+                    <a href="friends.html">好友</a>
+                </li>
+                <li>
+                    <a href="settings.html">设置</a>
+                </li>
+            </ul>
+            {% include passport.inc.html %}
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</div>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="container">
+    <div style="margin-top: 2em;">
+        <ol class="breadcrumb" ng-controller="deploymentCtrl">
+            <li><a href="circles.html">工作圈</a></li>
+            <li><a href="circle.html?id={{!deployment.circle._id}}">{{!deployment.circle.name}}</a></li>
+            <li class="active" name="name">{{!deployment.name}}</li>
+        </ol>
+        <div class="jumbotron" ng-controller="deploymentCtrl">
+            <div class="container">
+                <h1>{{!weixinmp.name || '[公众号名称]'}}<small>[ID:{{!deployment.serial}}]</small></h1>
+
+                <p>微信原始ID：{{!weixinmp.ghid}}</p>
+                <p ng-if="weixinmp.token">开发者URL：{{ request.protocol }}://{{ request.host }}/wx/{{!weixinmp.token}}</p>
+
+                <p><a class="btn btn-primary btn-lg" role="button" data-toggle="modal"
+                      data-target="#update-weixinmp-modal">修改 »</a></p>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="update-weixinmp-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">修改微信公众号信息</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form id="update-weixinmp-form" role="form" name="weixinmp" method="post" action="/m/weixinmp/{{ id }}">
+                                <div class="form-group">
+                                    <label for="mp-name" class="control-label">名称</label>
+                                    <input type="text" class="form-control" id="mp-name" name="name" ng-model="weixinmp.name"
+                                           placeholder="公众号名称">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mp-ghid" class="control-label">原始ID</label>
+                                    <input type="text" class="form-control" id="mp-ghid" name="ghid" ng-model="weixinmp.ghid"
+                                           placeholder="gh_000000000000">
+                                </div>
+                                <!--<div class="form-group" ng-if="weixinmp.ghid">-->
+                                    <!--<label for="mp-ghid" class="control-label">原始ID</label>-->
+                                    <!--<p class="form-control-static">{{!weixinmp.ghid}}</p>-->
+                                <!--</div>-->
+                                <div class="form-group">
+                                    <label for="mp-token" class="control-label">TOKEN</label>
+                                    <input type="text" class="form-control" id="mp-token" name="token" ng-model="weixinmp.token"
+                                           placeholder="token">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mp-appid" class="control-label">APPID</label>
+                                    <input type="text" class="form-control" id="mp-appid" name="appid" ng-model="weixinmp.appid"
+                                           placeholder="appid">
+                                </div>
+                                <div class="form-group">
+                                    <label for="mp-secret" class="control-label">SECRET</label>
+                                    <input type="text" class="form-control" id="mp-secret" name="secret" ng-model="weixinmp.secret"
+                                           placeholder="secret">
+                                </div>
+                                </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" class="btn btn-primary" id="update-weixin-btn" onclick="update_weixinmp()">确认</button>
+                            <div id="modal-feedback" class="alert hidden"></div>
+                        </div>
+
+                    </div>
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal -->
+        </div>
+
+
+        <div class="row">
+                <div class="col-md-3">
+                    <div class="bs-sidebar hidden-print" role="complementary">
+                        <ul class="nav bs-sidenav">
+                            <li class="catelogy active"><a>基本服务</a></li>
+                                <li class="active"><a href="#article-tab" data-toggle="tab">图文素材</a></li>
+                                <li><a href="#reply-tab" data-toggle="tab">回复规则</a></li>
+                                <li><a href="#menu-tab" data-toggle="tab">自定义菜单</a></li>
+                                <li><a href="#report-tab" data-toggle="tab">运营报表</a></li>
+                                <li><a href="#loc-tab" data-toggle="tab">位置信息</a></li>
+                                <li><a href="#forward-tab" data-toggle="tab">中转集成</a></li>
+                            <li class="catelogy"><a>推广服务</a></li>
+                                <li><a href="#draw-tab" data-toggle="tab">抽奖</a></li>
+                                <li><a href="#wall-tab" data-toggle="tab">微信墙</a></li>
+                                <li><a href="#story-tab" data-toggle="tab">微故事</a></li>
+                                <li><a href="#like-tab" data-toggle="tab">转赞</a></li>
+                                <li><a href="#coupon-tab" data-toggle="tab">优惠券</a></li>
+                            <li class="catelogy"><a>业务功能</a></li>
+                                <li><a href="#home-tab" data-toggle="tab">官网</a></li>
+                                <li><a href="#membership-tab" data-toggle="tab">会员</a></li>
+                                <li><a href="#shop-tab" data-toggle="tab">直销</a></li>
+                                <li><a href="#appointment-tab" data-toggle="tab">预约</a></li>
+                                <li><a href="#question-tab" data-toggle="tab">调查表</a></li>
+                                <li><a href="#service-tab" data-toggle="tab">客服</a></li>
+                            </li>
+                        </ul>
+                  </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane active in fade" id="article-tab">
+                                 素材
+                        </div>
+                        <div class="tab-pane fade" id="reply-tab">
+                                      回复
+                        </div>
+                        <div class="tab-pane fade" id="menu-tab">
+                                自定义菜单
+                        </div>
+                        <div class="tab-pane fade" id="report-tab">
+                                运营报表
+                        </div>
+                        <div class="tab-pane fade" id="loc-tab">
+                                位置信息
+                        </div>
+                        <div class="tab-pane fade" id="forward-tab">
+                                中转集成
+                        </div>
+                        <div class="tab-pane fade" id="draw-tab">抽奖</div>
+                        <div class="tab-pane fade" id="wall-tab">微信墙</div>
+                        <div class="tab-pane fade" id="story-tab">微故事</div>
+                        <div class="tab-pane fade" id="like-tab">转赞</div>
+                        <div class="tab-pane fade" id="coupon-tab">优惠券</div>
+                        <div class="tab-pane fade" id="home-tab">官网</div>
+                        <div class="tab-pane fade" id="membership-tab">会员</div>
+                        <div class="tab-pane fade" id="shop-tab">直销</div>
+                        <div class="tab-pane fade" id="appointment-tab">预约</div>
+                        <div class="tab-pane fade" id="question-tab">调查表</div>
+                        <div class="tab-pane fade" id="service-tab">客服</div>
+
+                    </div>
+
+                </div>
+        </div>
+
+        <hr>
+        <footer>
+            {% include footer.inc.html %}
+        </footer>
+    </div>
+</div>
+    <!-- /container -->
+
+    {% include js.inc.html %}
+    <script type="text/javascript">
+        $(function () {
+            $('.bs-sidenav a[data-toggle="tab"]').on('shown.bs.tab', function (evt) {
+                $(this).closest('li').prevAll('li.catelogy:first').addClass('active');
+            });
+        });
+
+        function update_weixinmp() {
+            var $frm = $('#update-weixinmp-form');
+            form_to_service($frm, function (data) {
+                $('#modal-feedback').text('修改成功');
+                $('#modal-feedback').addClass('alert-success');
+                $('#modal-feedback').removeClass('hidden');
+                setTimeout(function() {
+                    $('#modal-feedback').removeClass('alert-success');
+                    $('#modal-feedback').addClass('hidden');
+                    $('#modal-feedback').empty();
+                    $('#update-weixinmp-modal').modal('hide');
+                }, 1000);
+            });
+        }
+
+        // ======================================
+        var app = angular.module('app', [])
+        app.controller('deploymentCtrl', function ($scope, $http) {
+            var x2js = new X2JS();
+            $http.get('/deployment/{{ id }}').success(function(data) {
+                $scope.deployment = x2js.xml_str2json(data).deployment;
+            });
+
+            $http.get('/m/weixinmp/{{ id }}').success(function(data) {
+                $scope.weixinmp = x2js.xml_str2json(data).weixinmp;
+            });
+        });
+    </script>
+</body>
+</html>

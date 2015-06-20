@@ -1,0 +1,19 @@
+(function($) {
+    $(document).ready(function() {
+        $('[data-dialog-options]').each(function () {
+            var options_var_name = $(this).attr('data-dialog-options');
+            if (options_var_name in window) {
+                var opt = window[options_var_name];
+                opt.autoOpen = false;
+                opt.closeOnEscape = true;
+                //opt.draggable = false;
+                $(this).addClass('ui-widget ui-widget-content ui-corner-all');
+                $(this).dialog(opt);
+                $('[data-dialog-for="' + $(this).attr('id') + '"]').bind('click', function() {
+                    var dialog_id = $(this).attr('data-dialog-for');
+                    $('#' + dialog_id).dialog('open');
+                });
+            }
+        });
+    })
+}(jQuery));

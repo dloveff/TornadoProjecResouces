@@ -1,0 +1,315 @@
+
+html, body {
+	/*position:relative;
+	height:100%;*/
+	color:#222;
+	font-family:Microsoft YaHei,Helvitica,Verdana,Tohoma,Arial,san-serif;
+	/*background-color:#f0f0f0;*/
+	margin:0;
+	padding: 0;
+	text-decoration: none;
+}
+body >.tips {
+	position:fixed;
+	display:none;
+	top:50%;
+	left:50%;
+	z-index:100;
+	text-align:center;
+	width:200px;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td {
+	margin:0;
+	padding:0;
+}
+
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+
+fieldset, img {
+	border:0;
+}
+address, caption, cite, code, dfn,  th, var {
+	font-style:normal;
+	font-weight:normal;
+}
+ol, ul {
+	list-style: none outside none;
+	margin:0;
+	padding: 0;
+}
+caption, th {
+	text-align:left;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size:100%;
+	font-weight:normal;
+}
+a {
+	color:#000000;
+	text-decoration: none;
+}
+.left{ float:left}
+.right{ float:right}
+q:before, q:after {
+	content:'';
+}
+abbr, acronym {
+	border:0;
+	font-variant:normal;
+}
+sup {
+	vertical-align:text-top;
+}
+sub {
+	vertical-align:text-bottom;
+}
+input, textarea, select {
+	font-family:inherit;
+	font-size:inherit;
+	font-weight:inherit;
+}
+input, textarea, select {
+*font-size:100%;
+}
+legend {
+	color:#000;
+}
+
+/* header */
+#header{
+position:fixed;
+width:100%;
+left:0;
+bottom:0;
+z-index:999;
+height:45px;
+/* line-height:45px; */
+background-color:#000000;
+border-bottom:1px solid #ccc;
+background-image: -webkit-gradient(linear, left top, left bottom, from(#2e2e2e), to(#000000)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, #2e2e2e, #000000); /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, #2e2e2e, #000000); /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, #2e2e2e, #000000); /* IE10 */
+  background-image:      -o-linear-gradient(top, #2e2e2e, #000000); /* Opera 11.10+ */
+background:linear-gradient(to bottom, #2e2e2e, #000000);
+color:#FFF;
+box-shadow:-1px -1px 3px #ccc;
+min-width:320px;
+}
+
+.narcar{
+position:relative;
+}
+.narcar span{
+position:absolute;
+font-weight:bold;
+color:#F00;
+font-size:16px;
+top:3px;
+right:-20px;
+}
+.hewarp li{ 
+float:left;
+width:25%;
+text-align:center;
+color:#FFF;
+margin:0 auto;
+}
+.hewarp li a,.hewarp li span{
+display:block;
+font-size:11px;
+height:45px;
+color:#FFF;
+width:100%;
+/* line-height:80px; */
+}
+
+.hewarp li img{
+width:25px;
+display:block;
+margin:0 auto;
+ padding-top:2px;
+
+}
+.moveleft_p{
+position:relative;
+left:-200px; 
+color:#FFF;
+}
+i.mlgomr{
+width:24px;
+height:20px;
+background-position:-2px -35px;
+display:block;
+position:fixed;
+left:80px;
+top:45%;
+
+}
+.mlwarp{
+background:url(../images/b_bg.png) repeat;
+z-index:999;
+position:absolute;
+left:0;
+top:-15px;
+display:none;
+
+}
+
+i.alltype,i.pageup{
+width:23px;
+height:21px;
+display:block;
+margin:7px 12px 0 12px;
+}
+i.pageup{
+background-position:0 0;
+}
+i.alltype{
+background-position:-23px 0;
+}
+/* header END */
+/*cate*/
+#cate{
+	background-color:#f5f5f5;
+	margin:0 auto;
+	overflow-x:hidden;
+	width:100%;
+}
+#cate .banner {
+}
+#cate .banner img{
+	width:100%;
+	/*box-shadow:0 0 10px rgba(0, 0, 0, 0.06);
+	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.06);
+	-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.06);*/
+}
+
+/*iscroll*/
+
+.banner {
+	width:100%;
+	margin:0 auto;
+	padding:0;
+	background-color:#151515;
+}
+#wrapper {
+	margin:0;
+	width:100%;
+	height:auto;
+	float:left;
+	position:relative;	/* On older OS versions "position" and "z-index" must be defined, */
+	z-index:1;			/* it seems that recent webkit is less picky and works anyway. */
+	overflow:hidden;
+	
+}
+
+#scroller {
+	height:auto;
+	float:left;
+	padding:0;
+}
+
+#scroller ul {
+	list-style:none;
+	display:block;
+	float:left;
+	width:100%;
+	height:auto;
+	padding:0;
+	margin:0;
+	text-align:left;
+}
+
+#scroller li {
+	
+	display:block; float:left;
+	width:auto; height:auto;
+	text-align:center;
+	font-size:0px;
+	padding:0;
+	position:relative;
+}
+#scroller li a{
+	
+	display:block;
+	padding:0;
+	margin:0;
+}
+#scroller li p{
+	position:absolute;
+	z-index:2;
+	display:block;
+	width:100%;
+	bottom:0;
+	background-color:rgba(0, 0, 0, 0.5);
+	color:#F4F4F4;
+	font-size:14px;
+	text-indent: 55px;
+	line-height:24px;
+	text-align: left;
+    text-indent: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+	padding:0;
+	margin:0;
+}
+#nav {
+	float: right;
+    margin-top: -15px;
+    padding: 0;
+    position: relative;
+    width: auto;
+    z-index: 3;
+}
+
+#prev, #next {
+	float:left;
+	font-weight:bold;
+	font-size:14px;
+	padding:5px 0;
+	width:80px;
+	display: none;
+}
+
+#next {
+	float:right;
+	text-align:right;
+}
+
+#indicator > li {
+	display:block; float:left;
+	list-style:none;
+	padding:0; margin:0;
+}
+
+#indicator {
+	display: block;
+    margin: 0 8px;
+    padding: 0;
+    width: auto;
+}
+
+#indicator > li {
+	text-indent:-9999em;
+	width:8px; height:8px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-o-border-radius:4px;
+	border-radius:4px;
+	background:#888;
+	overflow:hidden;
+	margin-right:4px;
+}
+
+#indicator > li.active {
+	background:#DDDDDD;
+}
+
+#indicator > li:last-child {
+	margin:0;
+}
+

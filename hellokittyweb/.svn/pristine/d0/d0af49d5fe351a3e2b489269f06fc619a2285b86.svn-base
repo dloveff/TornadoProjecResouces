@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN" ng-app="app" class="ng-app:app" id="ng-app">
+  <head>
+    <meta charset="utf-8">
+    <meta property="wb:webmaster" content="47ffbbf8f2d7f227" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="">
+    <meta name="author" content="Chinfeng Chung">
+    <link rel="shortcut icon" href="/favicon.ico">
+       <!--  <link href="css/login.css" rel="stylesheet">-->
+    <title>联系我们</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="css/carousel.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><b><span style="color:#FFF">紫微星</span><span style="color:#F00">系列</span></b></a>
+            </div>
+            <div class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="#">花卉/产品</a></li>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">业务合作</a></li>
+                <li><a href="#">人才招聘</a></li>
+				<li  class="active"><a href="helpme.html">联系我们</a></li>
+				<li><a href="#">解决方案</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">菜单 <b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="login.html">登录</a></li>
+                    <li><a href="#">地图导航</a></li>
+                    <li class="divider">C</li>
+                    <li class="dropdown-header">D</li>
+                    <li><a href="#">E</a></li>
+                    <li><a href="#">F</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="nav navbar-nav navbar-right" nav-sign  ng-controller="signCntl" ng-cloak></div>
+              <!--<div class="nav navbar-nav navbar-right" ng-if="passport == null" ng-include="'signin.inc.html'"></div>-->
+              <!--<div class="nav navbar-nav navbar-right" ng-if="passport != null" ng-include="'passport.inc.html'"></div>-->
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+
+      <!-- START THE FEATURETTES -->
+
+      <hr class="featurette-divider">
+      <article class="oe_page" align="center">
+    <section class="oe_container" align="center">
+        <div class="oe_row oe_spaced" align="center">
+            <h2 class="oe_slogan">联系我们</h2>
+            <div class="oe_contact_thanks">
+                
+            </div>
+
+            <form action="" method="get" class="oe_contact_form">
+                <table class='oe_form_layout_table'>
+                    <tr>
+                        <td>
+                            <label class="oe_input_label">您的电子邮件地址</label>
+                        </td>
+                        <td>
+                            <input class='oe_input' type="text" name="email" autofocus="autofocus"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="oe_input_label">您的全名</label>
+                        </td>
+                        <td>
+                            <input class='oe_input' type="text" name="name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="oe_input_label">您的公司</label>
+                        </td>
+                        <td>
+                            <input class='oe_input' type="text" name="company"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="oe_input_label">您的电话号码（可选）</label>
+                        </td>
+                        <td>
+                            <input class='oe_input' type="text" name="phone"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="oe_input_label">你的主要兴趣</label>
+                        </td>
+                        <td>
+                            <select name="plan" class='oe_input'>
+                                <option value="qt">其它</option>
+                                <option value="hz">想要合作</option>
+                                <option value="yw">业务咨询</option>
+                                <option value="jy">建议/意见</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+     <td>
+     <label class="oe_input_label">您的问题/评论</label>
+     </td>
+     <td>
+     <textarea name="text" class='oe_input oe_textarea'></textarea>
+     </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button name="submit" class='oe_button'>
+                                发送我的问题
+                                <i class="icon-spinner icon-spin icon-large" style="display: none;"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </section>
+</article>
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+
+      <!-- FOOTER -->
+      <footer>
+        <p class="pull-right"><a href="#">返回顶层</a></p>
+        <p>&copy; 2014 小狒狒制作, (星海科技有限公司). &middot; <a href="#">私有</a> &middot; <a href="#">条款</a></p>
+      </footer>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-2.1.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+    <script src="js/angular.min1.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/sohobiz-common.js"></script>
+    <script src="js/sohobiz-index.js"></script>
+  </body>
+</html>

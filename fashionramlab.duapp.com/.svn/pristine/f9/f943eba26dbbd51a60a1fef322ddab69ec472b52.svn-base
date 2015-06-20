@@ -1,0 +1,31 @@
+/*(C) 2001-2008 Comsenz Inc.*/
+
+*{ word-wrap:break-word; outline:none; }
+body{ background:#FFF; text-align:center; }
+body, td, input, textarea, select, button{ color:#555; font:12px "Lucida Grande", Verdana, Lucida, Helvetica, Arial, "ËÎÌו", sans-serif; }
+body, ul, dl, dd, p, h1, h2, h3, h4, h5, h6, form, fieldset { margin:0; padding:0; }
+ul{ list-style:none; }
+h1, h2, h3, h4, h5, h6{ font-size:12px; }
+a{ color:#2366A8; text-decoration:none; }
+	a:hover { text-decoration:underline; }
+	a img{ border:none; }
+em, cite, th{ font-style:normal; font-weight:normal; }
+table{ border-collapse:collapse; }
+label{ cursor:pointer; }
+
+
+
+
+/* mainbox */
+
+
+.menutd{ background:#FFF right top no-repeat;border-top:1px solid #DDD; border-right:8px solid #DDD;}
+.menu{ position:relative; z-index:20; width:180px; }
+	.menu ul{ position:absolute; top:5px; right:6px !important; right:5px; list-style:none; width:170px;  }
+		.menu li{ margin:3px 0; *margin:0; height:auto !important; height:25px; overflow:hidden; }
+		.menu li a{ display:block; padding:4px 0 3px 30px; *padding:5px 0 3px 30px; no-repeat 15px -43px; color:black; }
+			.menu li a:hover{ text-decoration:none; background:#EAF4FB  no-repeat 15px -43px; color:#2366A8; }
+			.menu li a.tabon,.menu li a.tabon:hover{ text-decoration:none; color:#2366A8; }
+
+.mask{ padding-top:10px; border:1px solid #DDD; }
+

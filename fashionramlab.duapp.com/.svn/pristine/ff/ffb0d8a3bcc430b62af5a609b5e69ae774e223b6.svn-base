@@ -1,0 +1,82 @@
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>优企信息技术有限公司</title>
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="common/public.css" />
+<link type="text/css" rel="stylesheet" href="images/style.css" />
+<script type="text/javascript" src="common/jquery.js"></script>
+<script type="text/javascript" src="common/alert.js"></script>
+<script type="text/javascript" src="common/common.js"></script>
+<script type="text/jscript">
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+WeixinJSBridge.call('hideToolbar');
+});
+
+
+</script>
+
+</head>
+
+<body>
+<div class="header">
+    <a data-rel="back" data-role="none" class="back"><p></p></a>
+    <a data-role="none" href="daohan.htm"><p></p></a>
+    <a data-role="none" href="tel:400-666-9838"><p></p></a>
+    <a data-role="none" class="links"><p></p></a>
+</div>
+
+   <div class="content">
+   
+   	<div style="width:95%; margin:0 auto; text-align:left;">
+    
+    <img src="images/zhuanjia.jpg" width="70%" height="auto"><br>
+				  <p><span style="font:'微软雅黑'; font-size:24px; color:#598c00">个人经历</span></P><br>
+				  <hr color="#598c00" ;><br>
+				 	 <div>
+				  	<p align="left"><span style="font:'微软雅黑'; font-size:18px; color:#598c00;">错过了移动互联网，您错过的不是一次机会，而是一个新渠道！</span></p>
+							 <span style="font:'微软雅黑'; font-size:14px; color:#666666; text-align:left">■02年进入互联网行业，历经互联网发展的几大重要阶段<br>
+							 ■05年成为某集团公司华南区总经理，受聘为华南地区《百万中小企业触网运动》主讲师，培训企业达到1万家以上<br>
+							 ■08年带领团队跨入移动互联网领域，成为google移动手机搜索广东区总代理<br>
+							 ■12年成立深圳爱购网电子商务有限公司 开始进驻微营销市场 为多家企业做策划顾问<br>
+							 </span>
+</div>
+
+
+ </div>
+
+ <div class="sidebar">
+    <a href="/" data-role="none">
+        <p class="text">网站首页</p>
+        <p class="pic"></p>
+    </a>
+    <a href="About.htm" data-role="none">
+            <p class="text">关于我们</p>
+            <p class="pic"></p>
+        </a><a href="wenhua.htm" data-role="none">
+            <p class="text">核心文化</p>
+            <p class="pic"></p>
+        </a><a href="Serve.htm" data-role="none">
+            <p class="text">服务优势</p>
+            <p class="pic"></p>
+        </a><a href="Team.htm" data-role="none">
+            <p class="text">团队风采</p>
+            <p class="pic"></p>
+        </a><a href="Case.htm" data-role="none">
+            <p class="text">品牌案例</p>
+            <p class="pic"></p>
+        </a><a href="newsclass.htm" data-role="none">
+            <p class="text">咨询动态</p>
+            <p class="pic"></p>
+        </a>
+        <a href="Connect.htm" data-role="none">
+            <p class="text">联系我们</p>
+            <p class="pic"></p>
+        </a></div>
+
+<div class="bj" style="display:none"></div>
+</body>
+</html>

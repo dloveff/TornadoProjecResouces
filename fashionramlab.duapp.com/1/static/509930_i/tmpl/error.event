@@ -1,0 +1,24 @@
+<xml>
+  <MsgType>news</MsgType>
+  <ArticleCount>3</ArticleCount>
+  <Articles>
+    <item>
+      <Title>内部CRM</Title>
+      <Description>内部客户关系管理系统</Description>
+      <PicUrl>http://www.yyufsoft.com/wx/sites/fsyy/img/reg.gif</PicUrl>
+      <Url>http://www.yyufsoft.com/wx/sites/sites/509930_i/index.html</Url>
+    </item>
+    <item>
+      <Title>内部CRM</Title>
+      <Description>内部客户关系管理系统</Description>
+      <PicUrl>http://www.yyufsoft.com/wx/sites/fsyy/img/reg.gif</PicUrl>
+      <Url>sites/fsyy/crm.html</Url>
+    </item>
+    <item>
+      <Title>内部CRM</Title>
+      <Description>内部客户关系管理系统</Description>
+      <PicUrl>http://www.yyufsoft.com/wx/sites/fsyy/img/reg.gif</PicUrl>
+      <Url>sites/fsyy/crm.html</Url>
+    </item>
+  </Articles>
+</xml>

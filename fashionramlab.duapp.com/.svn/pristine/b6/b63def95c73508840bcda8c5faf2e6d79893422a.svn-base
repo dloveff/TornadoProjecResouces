@@ -1,0 +1,11 @@
+<div id="config">
+<ul>
+    <li><a href="console_recv_pattern.html" target="#console_recv_patterns">接收模式</a></li>
+    <li><a href="console_reply_plugin.html">回复插件</a></li>
+	
+</ul>
+<div id="con"></div>
+</div>
+  <script  type="text/javascript">
+    $( "#config" ).tabs();
+  </script>

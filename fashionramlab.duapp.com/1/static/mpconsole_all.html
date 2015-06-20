@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>进驻微信列表</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <link id="bs-css" href="css/bootstrap-cerulean.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>   
+	<style type="text/css">
+	  body {
+		padding-bottom: 40px;
+	  }
+	  .sidebar-nav {
+		padding: 9px 0;
+	  }
+
+	  .container-fluid {
+          padding-right: 20px;
+          padding-left: 20px;
+          *zoom: 1;
+      }
+      
+      input[name="token"] {
+          border: none;
+          width: 100%;
+      }        
+	</style>
+	<script type="text/javascript">
+        $(function() {
+            $( '#update-dialog' ).dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $( this ).dialog( 'close' );
+                    }
+                }
+            });
+            $( '#pattern-dialog' ).dialog({
+                autoOpen: false,
+                modal: true,
+                buttons: {
+                    Ok: function() {
+                        $( this ).dialog( 'close' );
+                    }
+                }
+            });
+            
+            $( '#addpluginbtn' ).button({
+                icons: {
+                    primary: 'ui-icon-plusthick'
+                },
+                text: true              
+            }).click(function( event ) {
+                site_id = $('#pattern-form input[name="site_id"]').val();
+                ptn = $('#pattern-form select[name="pattern"]').val();
+                cn = $('#pattern-form select[name="class"]').val();
+                settings = $('#pattern-form textarea[name="settings"]').val();
+                xml = '<plugin site_id="' + site_id + '">' +
+                      '<pattern>' + ptn + '</pattern>' +
+                      '<class>' + cn + '</class>' +
+                      '<settings><![CDATA[' + settings + ']]></settings>' +
+                      '</plugin>';
+                $.ajax({
+                    type: 'PUT',
+                    url: '/mpplugin/'+site_id,
+                    data: xml,
+                    success: function(data, status, xhr) {
+                        $('#plugin-list').append(
+                            '<li data-plugin-id="' + $(this).attr('id') + '">' +
+                            '<p>规则：' + ptn + '</p>' +
+                            '<p>插件：' + cn + '</p>' +
+                            '<p>参数：' + settings + '</p>' +
+                            '<button>删除插件</button> ' +
+                            '</li>'
+                        );
+                    }
+                });
+                event.preventDefault();
+            });
+
+            $.ajax({
+                type: 'GET',
+                url: '/login',
+                success: function(data, status, xhr) {
+                    if ($('token', data).text() != 'administrator') {
+                        location.href = '/login?next=%2Fmpconsole_all.html'
+                    } else {
+                        load_mp_list();
+                    }
+                }
+            });
+            
+        });
+        
+        function load_mp_list() {
+            $.ajax({
+                type: 'GET',
+                url: '/mplist',
+                success: function(data, status, xhr) {
+                    $('mp', data).each(function() {
+                        $('#listbody').append(
+                            '<tr data-id="' + $(this).attr('id') + '">' +
+                            '<td><input type="text" name="token" readonly value="' + $('token', this).text() + '"/></td>' +
+                            '<td><input type="text" name="name" value="' + $('name', this).text() + '"/></td>' +
+                            '<td><input type="text" name="wxid" value="' + $('wxid', this).text() + '"/></td>' +
+                            '<td><input type="text" name="appid" value="' + $('appid', this).text() + '"/></td>' +
+                            '<td><input type="text" name="secret" value="' + $('secret', this).text() + '"/></td>' +
+                            '<td><input type="text" name="enabled" value="' + $('enabled', this).text() + '"/></td>' +
+                            '<td><button onclick="resetpassword(\'' + $(this).attr('id') + '\')">重置密码</button>' +
+                            '<button onclick="updatemp(\'' + $(this).attr('id') + '\')">确认修改</button>' +
+                            '<button onclick="mpdetail(\'' + $(this).attr('id') + '\')">管理</button>' +
+                            '</td></tr>'
+                        );
+                        $('tr[data-id="' + $(this).attr('id') + '"] button:first').button({
+                          icons: {
+                            primary: 'ui-icon-key'
+                          },
+                          text: false
+                        }).next().button({
+                          icons: {
+                            primary: 'ui-icon-check'
+                          },
+                          text: false
+                        }).next().button({
+                          icons: {
+                            primary: 'ui-icon-newwin'
+                          },
+                          text: false
+                        });
+                        
+                    });
+                }
+            });
+        }
+
+        function updatemp(site_id) {
+            xml = '<mp id="' + site_id + '">' +
+                  '<name>' + get_input_value_by_id(site_id, 'name') + '</name>' +
+                  '<wxid>' + get_input_value_by_id(site_id, 'wxid') + '</wxid>' +
+                  '<appid>' + get_input_value_by_id(site_id, 'appid') + '</appid>' +
+                  '<secret>' + get_input_value_by_id(site_id, 'secret') + '</secret>' +
+                  '<enabled>' + get_input_value_by_id(site_id, 'enabled') + '</enabled>' +
+                  '</mp>';
+            $.ajax({
+                type: 'PUT',
+                url: '/mpupdate',
+                data: xml,
+                success: function() {
+                    $( '#update-dialog' ).dialog('open');
+                }
+            });
+        }
+        
+        function get_input_value_by_id(site_id, n) {
+            return $('tr[data-id="' + site_id + '"] input[name="' + n + '"]').val();
+        }
+        
+        function mpdetail(site_id) {
+            tk = $('tr[data-id="' + site_id + '"] input[name="token"]').val();
+            nm = $('tr[data-id="' + site_id + '"] input[name="name"]').val();
+            $('#pattern-form input[name="site_id"]').val(site_id);
+            $('#pd-token').text(tk);
+            $('#pd-name').text(nm);            
+            $('#plugin-list').empty();
+            $( '#pattern-dialog' ).dialog('open');
+            
+            $.ajax({
+                type: 'GET',
+                url: '/mpplugin/' + site_id,
+                success: function(data, status, xhr) {
+                    $('plugin', data).each(function() {
+                        $('#plugin-list').append(
+                            '<li data-plugin-id="' + $(this).attr('id') + '">' +
+                            '<p>规则：' + $('pattern', this).text() + '</p>' +
+                            '<p>插件：' + $('class', this).text() + '</p>' +
+                            '<p>参数：' + $('settings', this).text() + '</p>' +
+                            '<button onclick="return removeplugin(' + $(this).attr('id') + ')">删除插件</button> ' +
+                            '</li>'
+                        );
+                    });
+                }
+            });
+        }
+        
+        function onpluginchange(sel) {
+            v = $(sel).val();
+            if(v == 'plugin.TestPlugins.TextLinkPlugin') {
+                $('#pattern-form textarea[name="settings"]').val(JSON.stringify({
+                    'Content': '请输入回复内容，可使用<a href="http://链接">链接</a>。'
+                },null,2));
+            } else if (v == 'plugin.TestPlugins.ArticlePlugin') {
+                $('#pattern-form textarea[name="settings"]').val(JSON.stringify({
+                    'Articles': [
+                        {'Title':'标题1', 'Description': '描述1', 'PicUrl': 'http://图片全路径', 'Url': 'http://链接全路径'},
+                        {'Title':'标题2', 'Description': '描述2', 'PicUrl': 'http://图片全路径', 'Url': 'http://链接全路径'}
+                    ]
+                },null,2));
+            } else {
+                $('#pattern-form textarea[name="settings"]').val('');
+            }
+        }
+        
+        function removeplugin(pid) {
+			$.ajax({
+                type: 'DELETE',
+                url: '/mpplugin/'+pid,
+                async: false,
+                success: function(data, status, xhr) {
+                    $('li[data-plugin-id="' + pid + '"]').remove();
+                }
+            });
+            
+            return false;
+        }
+
+    </script>
+</head>
+
+<body>
+<div id="update-dialog" title="保存完成">
+  <p>
+    <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
+    微信公众号基本信息保存完成。
+  </p>
+</div>
+
+<div id="pattern-dialog" title="消息规则设置">
+    <h4><span id="pd-token"></span>/<span id="pd-name"></span></h4>
+    <form id="pattern-form">
+        <input type="hidden" name="site_id"/>
+        <p>插件设置</p>
+        <ul id="plugin-list">
+            
+        </ul>
+        <hr/>
+        <p>增加插件：</p>
+        <span>事件规则</span><select name="pattern">
+            <option value="/xml[MsgType=&quot;event&quot; and Event=&quot;subscribe&quot;]">关注</option>
+            <option value="/xml[MsgType=&quot;text&quot;]">文本</option>            
+            <option value="/xml[MsgType=&quot;image&quot;]">图片</option>
+            <option value="/xml[MsgType=&quot;event&quot;]">菜单事件</option>
+        </select><br/>
+        <span>插件</span><select name="class" onchange="onpluginchange(this)">
+            <option value="plugin.TestPlugins.TestingReplyPlugin">“测试中”插件</option>
+            <option value="plugin.TestPlugins.TextLinkPlugin">文本链接</option>
+            <option value="plugin.TestPlugins.ArticlePlugin">图文链接</option>
+        </select>
+        <span>插件参数</span>
+        <textarea rows="10" name="settings" style="width:100%"></textarea>
+        <button id="addpluginbtn">添加</button>
+    </form>
+</div>
+<div class="container-fluid">
+		<div class="row-fluid">
+            <div id="content" class="span10">
+			<!-- content starts -->
+			<div class="row-fluid sortable">		
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2 style="margin-top:0px;"><i class="icon-user"></i> 微信公众号管理</h2>
+						<!--
+						<div class="box-icon">
+							<button type="button" class="btn" onClick="window.location.href='#'">添加微信号</button>
+						</div>
+						-->
+					</div>
+				  <div class="box-content">
+						<table class="table table-striped table-bordered bootstrap-datatable datatable">
+						  <thead>
+							  <tr>
+							       <th>token</th>
+								  <th>名称</th>
+								  <th>原始ID</th>
+								  <th>APPID</th>
+								  <th>SECRET</th>
+								  <th>状态</th>
+								  <th>操作</th>
+							  </tr>
+						  </thead>   
+						  <tbody id="listbody">
+						    <!--
+							<tr>
+							    <td class="center">{{ mpsite[1] }}</td>
+								<td>空调</td>
+								<td class="center">2012/01/01</td>
+								<td class="center">6982341</td>
+								<td class="center">18933014089</td>
+								<td class="center"><a class="btn btn-info" href="updateShop.html">停/启</a></td>
+								<td class="center"><a class="btn btn-info" href="updateShop.html">停/启</a>&nbsp;&nbsp;<a class="btn btn-info" href="updateShop.html">重置密码</a></td>
+							</tr>
+							-->
+						  </tbody>
+						 
+					  </table>            
+				  </div>
+				</div>
+			
+			</div>
+					
+		  </div>
+  </div>
+		
+</div>		
+</body>
+</html>

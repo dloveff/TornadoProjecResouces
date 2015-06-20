@@ -1,0 +1,58 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from orm import getSession
+from model.tag import Tag
+import meta
+import tornado.web
+from sqlalchemy.orm.exc import NoResultFound
+
+import xml.etree.ElementTree as ET
+
+__author__ = 'chinfeng'
+
+
+def __append_element(parent, tag, value):
+    e = ET.Element(tag)
+    if value:
+        e.text = value
+    parent.append(e)
+
+
+class TagHandler(tornado.web.RequestHandler):
+    __metaclass__ = meta.HandlerMetaClass
+    route = r'/mptags/(.*)'
+
+    def get(self, mpid_str):
+        session = getSession()
+        mpid = int(mpid_str)
+        self.set_header('Content-Type', 'text/json; charset=utf-8')
+        try:
+            tag_setting = session.query(Tag).filter(Tag.mpid == mpid).one()
+            self.write(tag_setting.setting)
+        except NoResultFound:
+            self.write('"tags": {}')
+
+    def post(self, mpid_str):
+        session = getSession()
+        self.set_header('Content-Type', 'text/json; charset=utf-8')
+        mpid = int(mpid_str)
+        tag = session.query(Tag).filter_by(mpid=mpid_str).first()
+        import json
+        x = add_value_to_tag(json.loads(self.request.body))
+        if not tag:
+           tag = Tag(mpid, json.dumps(x, ensure_ascii=False).encode('utf8'))
+        else:
+           tag.setting = json.dumps(x, ensure_ascii=False).encode('utf8')
+        session.add(tag)
+        session.commit()
+        self.write(tag.setting)
+
+
+def add_value_to_tag(tag_json, parent='/'):
+    for k, v in tag_json.items():
+        v['value'] = '%s%s/' % (parent, k)
+        if 'children' in v:
+            add_value_to_tag(v['children'], v['value'])
+    return tag_json
+

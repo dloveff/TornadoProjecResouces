@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>title</title>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<style type="text/css">
+ #container{
+   width: 997px;
+   height: 668px;
+   font-size:12px;
+ }
+
+
+</style>
+<script type="text/javascript">
+  var t = 4;
+  function fun(){
+   t--;
+   $("#sp").html("<font color='#A0A0A0'>"+t+"秒后跳转到主页面...</font>");
+   if(t==1){ 
+    location.href = "console.html";          
+   }
+  }
+  var inter = setInterval("fun()",1000);
+</script>
+
+</head>
+<body>
+<center>
+   <div id="container">
+	        <div id="context">
+			<br>
+			<br>
+		       <div id="left" style="width:100%;height: 308px;background-color: white;">
+		           <img alt="" src="img/gou.png"/><span style="color:#FF0000; font-size:36px">注册成功</span><br/>
+		           <span id="sp"></span>
+		       </div>
+	      </div>
+	     <div id="foot">
+	       
+	     </div>
+	 </div>
+  
+   </center>
+</body>
+</html>

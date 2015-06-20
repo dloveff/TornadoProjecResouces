@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2&ak=127oSt2V27bMnuGV8PC8Kkg6"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="js/route.js"></script>
+<title>TEST</title>
+<style type="text/css">
+body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0; }
+.mp{
+    background-color:red;
+}
+</style>
+ <script type="text/javascript">
+//初始化
+$(function() {
+	init_map("allmap");
+});
+</script>
+</head>
+<body style="margin:0;">
+  
+	<div id="allmap" style="width:100%;height:80%;border-bottom:1px solid black;"></div>
+    <div  style="width:100%;height:19%;">
+      <input type="button" value="祖庙（驾车）" style="height:40px;margin-left: 10px;" onclick="drive_route(113.112656,23.029751)"/>
+      <input type="button" style="height:40px;margin-left:10px;" value="宝塔路（驾车）" onclick="drive_route(113.081367,23.010153)"/>
+      <input type="button" style="height:40px;margin-left:10px;" value="祖庙（步行）" onclick="walk_route(113.112656,23.029751)"/>
+      <input type="button" style="height:40px;margin-left:10px;" value="宝塔路（步行）" onclick="walk_route(113.081367,23.010153)"/>
+    </div>
+
+</body>
+</html>
+

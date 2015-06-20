@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WEICBD MANUAL TEST</title>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+  <script type="text/javascript">
+  	$(function() {
+  		$('.submenu td').each(function() {
+  			tridx = $(this).parent().parent().find("tr").index($(this).parent()[0]);
+  			tdidx = $(this).parent().find("td").index($(this)[0]);
+  			subsuffix = '-' + tdidx + '-' + tridx;
+  			
+  			$(this).attr('id', 'sub' + subsuffix);
+  			$(this).html(
+  				'<p>名称<input type="input" name="name" value=""/></p>' +
+	  			'<p><input type="radio" name="subenable' + subsuffix + '" value="click"/>事件KEY：<input type="input" name="eventkey"/></p>' +
+	  			'<p><input type="radio" name="subenable' + subsuffix + '" value="view"/>链接URL：<input type="input" name="viewurl"/></p>' +
+	  			'<p><input type="radio" name="subenable' + subsuffix + '" value="none" checked="checked"/>无</p>'
+  			);
+  		});
+  		$('.topmenu td').each(function() {
+  			tdidx = $(this).parent().find("td").index($(this)[0]);
+  			topsuffix = '-' + tdidx;
+  			$(this).attr('id', 'top' + topsuffix);
+  			$(this).html(
+  				'<p>名称<input type="input" name="name" value=""/></p>' +
+	  			'<p><input type="radio" name="topenable' + topsuffix + '" value="click"/>事件KEY：<input type="input" name="eventkey"/></p>' +
+	  			'<p><input type="radio" name="topenable' + topsuffix + '" value="view"/>链接URL：<input type="input" name="viewurl"/></p>' +
+	  			'<p><input type="radio" name="topenable' + topsuffix + '" value="submenu"/>子菜单</p>' +
+	  			'<p><input type="radio" name="topenable' + topsuffix + '" value="none" checked="checked"/>无</p>'
+  			);
+  		});
+  		
+  		$('#btn').click(function(){
+ 			var accesstoken;
+			aturl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' + $('#appid').val() + '&secret=' + $('#secret').val();
+			$.ajax({
+				type: 'POST',
+				url: '/cross',
+				async: false,
+				contentType: 'text/xml; encoding=utf-8',
+				data: '<cross><method>GET</method><url><![CDATA[' + aturl + ']]></url></cross>',
+				success: function(data,status,xhr) {
+					accesstoken = JSON.parse(data).access_token;
+				}
+			});
+			murl = 'https://api.weixin.qq.com/cgi-bin/menu/create?access_token=' + accesstoken
+			$.ajax({
+				type: 'POST',
+				url: '/cross',
+				dataType: 'json',
+				async: false,
+				contentType: 'text/xml; encoding=utf-8',
+				data: '<cross><method>POST</method><url><![CDATA[' + murl + ']]></url><data><![CDATA[' + createMenuJson() + ']]></data></cross>',
+				success: function(data, status, xhr) {
+					$('#rtm').text(data.errcode == 0 ? '创建成功': '创建失败');
+				}
+			});
+  		});
+  		
+  		function createMenuJson() {
+  			rt = {
+  				button: new Array()
+  			};
+  			$('td[id^="top"]').each(function() {
+  				topidx = $(this).attr('id').substr(4, 4);
+  				enabletype = $('input[name^="topenable"]:checked', this).val();
+  				if (enabletype == 'click') {
+  					rt.button.push({
+  						name: $('input[name^="name"]', this).val(),
+  						type: 'click',
+  						key: $('input[name^="eventkey"]', this).val()
+  					});
+  				} else if (enabletype == 'view') {
+  					rt.button.push({
+  						name: $('input[name^="name"]', this).val(),
+  						type: 'view',
+  						url: $('input[name^="viewurl"]', this).val()
+  					});
+  				} else if (enabletype == 'submenu') {
+  					subarray = new Array();
+  					$('td[id^="sub-' + topidx + '"]').each(function() {
+  						enabletype = $('input[name^="subenable"]:checked', this).val();
+		  				if (enabletype == 'click') {
+		  					subarray.push({
+		  						name: $('input[name^="name"]', this).val(),
+		  						type: 'click',
+		  						key: $('input[name^="eventkey"]', this).val()
+		  					});
+		  				} else if (enabletype == 'view') {
+		  					subarray.push({
+		  						name: $('input[name^="name"]', this).val(),
+		  						type: 'view',
+		  						url: $('input[name^="viewurl"]', this).val()
+		  					});
+		  				}
+  					});
+  					rt.button.push({
+  						name: $('input[name^="name"]', this).val(),
+  						sub_button: subarray
+  					});
+  				}  				
+  			});
+  			
+  			json = JSON.stringify(rt,null,2);
+  			$('#menuData').text(json);
+  			return json;
+  		}
+  		  		
+  		$('#revBtn').click(function(){
+			var accesstoken;
+			aturl = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' + $('#appid').val() + '&secret=' + $('#secret').val();
+			$.ajax({
+				type: 'POST',
+				url: '/cross',
+				async: false,
+				contentType: 'text/xml; encoding=utf-8',
+				data: '<cross><method>GET</method><url><![CDATA[' + aturl + ']]></url></cross>',
+				success: function(data,status,xhr) {
+					accesstoken = JSON.parse(data).access_token;
+				}
+			});
+			murl = 'https://api.weixin.qq.com/cgi-bin/menu/get?access_token=' + accesstoken
+			$.ajax({
+				type: 'POST',
+				url: '/cross',
+				dataType: 'text',
+				contentType: 'text/xml; encoding=utf-8',
+				data: '<cross><method>GET</method><url><![CDATA[' + murl + ']]></url></cross>',
+				success: function(data, status, xhr) {
+					getMenuConfigure(data);
+				}
+			});
+
+  		});
+  		
+  		function getMenuConfigure(menuData) {
+  			menuJson = JSON.parse(menuData);
+  			curTopIdx = 0;
+  			curSubIdx = 0;
+  			btn = menuJson.menu.button;
+  			for(tm in btn) {
+  				if(btn[tm].sub_button.length > 0) {
+  					$('td[id="top-' + curTopIdx + '"] input[name="name"]').val(btn[tm].name);
+  					$('td[id="top-' + curTopIdx + '"] input[type="radio"][value="submenu"]').prop('checked',true);
+  					for(sm in btn[tm]['sub_button']) {
+  						// 子菜单
+  						for (k in btn[tm]['sub_button'][sm]) {
+  							subsuffix = '-' + curTopIdx + '-' + curSubIdx;
+	  						if (k == 'name') {
+	  							$('td[id="sub' + subsuffix + '"] input[name="name"]').val(btn[tm]['sub_button'][sm][k]);
+	  						} else if(k == 'type') {
+	  							if (btn[tm]['sub_button'][sm][k] == 'click') {
+		  							$('td[id="sub' + subsuffix + '"] input[type="radio"][value="click"]').prop('checked',true);
+		  							$('td[id="sub' + subsuffix + '"] input[name="eventkey"]').val(btn[tm]['sub_button'][sm]['key']);
+	  							} else if (btn[tm]['sub_button'][sm][k] == 'view') {
+		  							$('td[id="sub' + subsuffix + '"] input[type="radio"][value="view"]').prop('checked',true);
+		  							$('td[id="sub' + subsuffix + '"] input[name="viewurl"]').val(btn[tm]['sub_button'][sm]['url']);
+	  							}
+	  						}
+  						}
+  						curSubIdx += 1;
+  					} 
+  					curSubIdx = 0;
+  				} else {
+  					for (k in btn[tm]) {
+  						if (k == 'name') {
+  							$('td[id="top-' + curTopIdx + '"] input[name="name"]').val(btn[tm][k]);
+  						} else if(k == 'type') {
+  							if (btn[tm][k] == 'click') {
+	  							$('td[id="top-' + curTopIdx + '"] input[type="radio"][value="click"]').prop('checked',true);
+	  							$('td[id="top-' + curTopIdx + '"] input[name="eventkey"]').val(btn[tm]['key']);
+  							} else if (btn[tm][k] == 'view') {
+	  							$('td[id="top-' + curTopIdx + '"] input[type="radio"][value="view"]').prop('checked',true);
+	  							$('td[id="top-' + curTopIdx + '"] input[name="viewurl"]').val(btn[tm]['url']);
+  							}
+  						}
+  					}
+  				}
+  				curTopIdx += 1;
+  			}
+  		}
+	});
+  </script>
+<style>
+.submenu {}
+.topmenu { background-color:gray; }
+td { padding: 1em; }
+p { margin:0; }
+</style>
+</head>
+<body>
+<p>
+	<input type="text" id="appid" value="wx11d8146ac3774ae1"/>
+	<input type="text" id="secret" value="e00a5bcb0d47e80666437ecd1486292c"/>
+	<input type="button" id="revBtn" value="获取菜单配置"/>
+	<input type="button" value="创建菜单" id="btn"/>
+	<div id="rtm"></div>
+</p>
+<table border="1">
+	<tr class="submenu">
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr class="submenu">
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr class="submenu">
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr class="submenu">
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr class="submenu">
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr class="topmenu">
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+
+<p>
+<textarea id="menuData" style="height:600px; width:1024px">
+	
+</textarea>
+</p>
+</body>
+</html>

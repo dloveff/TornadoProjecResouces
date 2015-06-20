@@ -1,0 +1,82 @@
+
+
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>优企信息技术有限公司</title>
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="common/public.css" />
+<link type="text/css" rel="stylesheet" href="images/style.css" />
+<script type="text/javascript" src="common/jquery.js"></script>
+<script type="text/javascript" src="common/alert.js"></script>
+<script type="text/javascript" src="common/common.js"></script>
+<script type="text/jscript">
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+WeixinJSBridge.call('hideToolbar');
+});
+
+
+</script>
+s
+</head>
+
+<body>
+<div class="header">
+    <a data-rel="back" data-role="none" class="back"><p></p></a>
+    <a data-role="none" href="Connect.htm"><p></p></a>
+    <a data-role="none" href="tel:400-666-9838"><p></p></a>
+    <a data-role="none" class="links"><p></p></a>
+</div>
+<div class="content">
+   
+            <div class="mm">
+<P align=center><SPAN style="FONT-SIZE: 72px"><STRONG><SPAN style="FONT-SIZE: 48px; COLOR: #598c00">微信</SPAN></STRONG></SPAN><SPAN style="FONT-SIZE: 20px">，超过</SPAN><SPAN style="FONT-SIZE: 30px; COLOR: #ff0000"><STRONG>六亿</STRONG></SPAN><SPAN style="FONT-SIZE: 20px">人使用的手机应用<BR></SPAN></P>
+<P><SPAN style="FONT-SIZE: 18px">独立研发：佛山第一家集“研发+运营+培训”的微营销机构<BR>在线升级：技术与市场接轨，随时更新最新功能<BR>营销培训：强大的培训队伍，让你玩转微营销<BR>专业客服：超过60人的专业客服团队，解决后顾之忧<BR>丰富经验：10多年的互联网和电商运营经验，强力保障</SPAN></P>
+            </div>
+            
+        
+            
+<!---->
+
+</div>
+<div class="footer">
+    <p class="footer-top">&COPY;佛山优企信息技术有限公司</p>
+</div>
+
+
+
+ <div class="sidebar"> <a href="index.htm" data-role="none">
+        <p class="text">网站首页</p>
+        <p class="pic"></p>
+    </a>
+    <a href="About.htm" data-role="none">
+            <p class="text">关于我们</p>
+            <p class="pic"></p>
+        </a><a href="wenhua.htm" data-role="none">
+            <p class="text">核心文化</p>
+            <p class="pic"></p>
+        </a><a href="Serve.htm" data-role="none">
+            <p class="text">服务优势</p>
+            <p class="pic"></p>
+        </a><a href="Team.htm" data-role="none">
+            <p class="text">团队风采</p>
+            <p class="pic"></p>
+        </a><a href="Case.htm" data-role="none">
+            <p class="text">品牌案例</p>
+            <p class="pic"></p>
+        </a><a href="newsclass.htm" data-role="none">
+            <p class="text">咨询动态</p>
+            <p class="pic"></p>
+        </a>
+        <a href="Connect.htm" data-role="none">
+            <p class="text">联系我们</p>
+            <p class="pic"></p>
+        </a></div>
+
+<div class="bj" style="display:none"></div>
+</body>
+</html>
+
+

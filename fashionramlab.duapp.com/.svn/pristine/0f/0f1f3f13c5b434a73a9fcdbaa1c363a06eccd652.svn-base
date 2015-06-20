@@ -1,0 +1,179 @@
+/**
+ * Created by TsukiHiBoshi on 14-1-8.
+ */
+function findListTag(){
+    var mpid=$("#mpid").val();
+    $.ajax({
+        type:'GET',
+        url: '/mptags/'+mpid,
+        success:function(date){
+           arrfun(date);
+        }
+    });
+}
+
+function arrfun(date){
+   $(date).children("tags").children("tag").each(function(){
+          var aid = $(this).attr("id");
+          var aname = $(this).attr("name");
+          addelement(aname,aid);
+          element(this)
+          /*$(this).children("tag").each(function(){
+              var id = $(this).attr("id");
+              var name = $(this).attr("name");
+              addelement(name,id)
+               $(this).children("tag").each(function(){
+                   var uid = $(this).attr("id");
+                   var uname = $(this).attr("name");
+                   addelement(uname,uid)
+               })
+          })*/
+  });
+}
+function element(ele){
+    $(ele).children("tag").each(function(){
+          var id = $(this).attr("id");
+          var name = $(this).attr("name");
+          addelement(name,id)
+          if (this != null){
+              element(this)
+          }else{
+              return
+          }
+    })
+}
+// 添加标签弹出窗
+function add_tag(){
+     $("#dialog-mp_tog_add").dialog({
+          resizable: false,
+          height:220,
+          width: 600,
+          modal: true,
+          buttons: {
+              "添加": function() {
+                   $("input").val("");
+                   $("#addtag").text("");
+                   submit_add_tag()
+              }
+          }
+      });
+}
+// 添加顶层标签弹出窗
+function add_up_tag(){
+     $("#dialog-up_tog_add").dialog({
+          resizable: false,
+          height:220,
+          width: 600,
+          modal: true,
+          buttons: {
+              "添加": function() {
+                   $("input").val("");
+                   $("#adduptag").text("");
+                   submit_up_tag()
+              }
+          }
+      });
+}
+ // 添加顶层标签
+function submit_up_tag(){
+    var name = $("#up_tag_name").val();
+    var mpid = $("#up_tag_id").val();
+    $.ajax({
+        type:'POST',
+        url: '/mptag/'+mpid,
+        date:'<tag name="'+ name +'"/>',
+        statusCode:{
+              200:function(){
+                  $("input").val("");
+                  $("#adupdtag").text(" ");
+                  $("#dialog-mp_tog_add").dialog( "close" );    //关闭对话框
+                  findListTag();   // 查出全部标签
+              },500:function(){
+                  $("input").val("");
+                  $("#adduptag").text("添加失败");
+              }
+        }
+    });
+}
+//  添加标签
+function submit_add_tag(){
+
+    var name=$("#tag_name").val();
+    var id=$("#tagid").val();
+    //ocument = $.parseXML('<tag name="'+ name +'"/>')
+    $.ajax({
+        type:'POST',
+        url: '/tag/'+id,
+        date: '<tag name="'+ name +'"/>',
+        statusCode:{
+              200:function(){
+                  $("input").val("");
+                  $("#addtag").text(" ");
+                  $("#dialog-mp_tog_add").dialog( "close" );    //关闭对话框
+                  findListTag();   // 查出全部标签
+              },500:function(){
+                  $("#addtag").text("添加失败");
+              }
+        }
+    });
+}
+// 动态添加节点
+function addelement(uname,uid){
+    $("#body").append("<tr class="+ uid +"><td>" + uname +"</td><td>" + uid +"</td>"
+    +"<td><a href='javascript:deleteShowtag("+uid+")'>删除</a> &nbsp;&nbsp; <a href='javascript:updateShowdilog("+uid+")'>修改</a></td></tr>")
+
+}
+// 删除标签
+function deleteShowtag(id){
+    if (confirm("您确定要删除标签嘛？")){
+        $.ajax({
+            type:'DELETE',
+            url: '/tag/'+id,
+            statusCode:{
+                  200:function(){
+                      findListTag();   // 查出全部标签
+                  },500:function(){
+                     alert("删除失败!");
+                  }
+            }
+        });
+    }else{
+        return
+    }
+}
+// 更新标签
+function updateShowdilog(id){
+    var uname = $('tr.'+id+' td:eq(0)').text();
+     $("#put_tag_name").val(uname);
+      $("#dialog-mp_tog_update").dialog({
+          resizable: false,
+          height:220,
+          width: 600,
+          modal: true,
+          buttons: {
+              "添加": function() {
+                   $("input").val("");
+                   $("#updatetag").text("");
+                    updateShowtag(id);
+              }
+          }
+      });
+}
+function updateShowtag(id){
+    var name = $("#put_tag_name").val();
+     $.ajax({
+            type:'PUT',
+            url: '/tag/'+id,
+            date: '<tag name="'+ name +'"/>',
+            statusCode:{
+                  200:function(){
+                      $("input").val("");
+                      $("#updatetag").text(" ");
+                      $("#dialog-mp_tog_update").dialog( "close" );    //关闭对话框
+                      findListTag();   // 查出全部标签
+                  },500:function(){
+                     alert("修改失败!");
+                  }
+            }
+     });
+}

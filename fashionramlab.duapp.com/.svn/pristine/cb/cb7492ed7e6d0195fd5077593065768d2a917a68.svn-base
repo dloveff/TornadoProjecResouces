@@ -1,0 +1,80 @@
+
+<!doctype html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>资讯</title>  
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" href="css/jquery.mobile-1.4.0-rc.1.min.css" />
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="js/jquery.mobile-1.4.0-rc.1.min.js"></script>
+<script type="text/javascript">
+ //查找全部内容
+function findconsole_module_cms(){
+$.ajax({
+		   type:'GET',
+		   url: '/mod/cms/article',
+		   success:function(date){
+           $("#data-collapsed ul").remove();
+		   $(date).find("article").each(function(){
+                     var id = $(this).attr("id");
+                    var priority = $(this).children("priority").text();
+		            var title = $(this).children("title").text();
+				    var content = $(this).children("content").text();
+				    var tags = $(this).children("tags").text();
+                    $("#data-collapsed").append("<ul data-role='listview' data-inset='true'><li data-role='list-divider'><span>标题：</span>"+title+"</li><li><p>内容：<span>"+content+
+                            "</span></p><p class='ui-li-aside'><span>标签:</span><strong>"+tags+"</strong></p> </li></ul>").trigger('create')
+				   });
+
+		    	}
+		   });
+}
+function findconsole_module_cmstags(tag){
+$.ajax({
+		   type:'GET',
+		   url: '/mod/cms/article?tag='+tag,
+		   success:function(date){
+           $("#data-collapsed ul").remove();
+		   $(date).find("article").each(function(){
+                    var priority = $(this).children("priority").text();
+		            var title = $(this).children("title").text();
+				    var content = $(this).children("content").text();
+				    var tags = $(this).children("tags").text();
+                    $("#data-collapsed").append("<ul data-role='listview' data-inset='true'><li data-role='list-divider'><span>标题：</span>"+title+"</li><li><p>内容：<span>"+content+
+                            "</span></p><p class='ui-li-aside'><span>标签:</span><strong>"+tags+"</strong></p> </li></ul>").trigger('create');
+				   });
+
+		    	}
+		   });
+}
+$(function(){
+    findconsole_module_cms();
+});
+ </script>
+<style type="text/css">
+#typeList a{
+margin-left:10px;}
+</style>
+</head>  
+<body>  
+<div data-role="page" id="demo-page" data-theme="a" data-url="demo-page">
+    <div role="main" data-role="content">
+		<div id="abc" data-role="collapsible-set" data-theme="a" data-content-theme="a">
+		  <form>
+		  <li data-role="list-divider" style="list-style-type:none;"><h3>分类:</h3></li>
+		  <li style="margin-left:10px;" id="typeList"><a href="#" onclick="findconsole_module_cmstags($(this).text())">新闻</a>
+              <a href="#" onclick="findconsole_module_cmstags($(this).text())">体育</a>
+              <a href="#" onclick="findconsole_module_cmstags($(this).text())">动态</a>
+              <a href="#" onclick="findconsole_module_cmstags($(this).text())">资讯</a></li>
+
+         <span id="data-collapsed"></span>
+
+
+
+		  </form>
+			</div>
+    </div>
+</div>
+</div>  
+</body>  
+</html>  

@@ -1,0 +1,535 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<title>微企通 - 微信墙</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script>
+    localStorage.lastmid =570;
+    var x = 0;
+    i = 99;
+    $(function () {
+        refreshList();
+    });
+    function refreshList() {
+        $.ajax({
+            type: 'GET',
+            url: '/mpwall/yourqi/' + localStorage.lastmid,
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            //async: false,
+            success: function (data) {
+                $('message', data).each(function () {
+                    localStorage.lastmid = $(this).attr('id');
+                    openid = $('openid', this).text();
+                    txt = $('text', this);
+                    i = i + 1;
+                    // global variables
+                    var content;
+                    if (txt.size() > 0)
+                        content = txt.text();
+                    else
+                        content = '<img src="' + $('picurl', this).text() + '"/>';
+                    var direction
+                    if ($(this).attr('id') % 2)
+                        direction = 'right_msg';
+                    else
+                        direction = 'left_msg';
+                    $('#msglist').append(
+                            '<div data-openid="' + openid + '" data-message-id="' +  $(this).attr('id') + '" class="msgitem ' + direction + '">' +
+                                    '<div class="msgsender">' + '会员：' + i + '</div>' +
+                                    '<div id="i" class="msgcontent" >' + content + '</div>' +
+                                    '<div style="clear: both;"/>'+
+                                    '</div>');
+                    $('#draw_list').append('<div class="list_font">' + '会员：' + i + '</div>');
+                    t = $('[data-message-id]:last').position().top -  $('[data-message-id]:first').position().top;
+                    $('.message_area').animate({
+                        scrollTop: t
+                    }, 500);
+                    x = i; //抽奖数组上限
+
+                });
+            }
+        });
+        setTimeout('refreshList()', 3000);
+
+    }
+    var rolling = false;
+    var rolled = new Object();
+    function start_roll() {
+        rolling = true;
+        roll_message();
+    }
+    function stop_roll() {
+        rolling = false;
+    }
+    function roll_message() {
+        // 中奖样式 in_roll 自行修改
+        var current_msg = $('.in_roll');
+        var next_msg;
+        var t;
+        if (current_msg.size() == 0) {
+            next_msg = $('div[data-message-id]:first');
+            next_msg.addClass('in_roll');
+            next_msg = current_msg;
+            t = 0;
+        } else {
+            current_msg.removeClass('in_roll');
+            var next_msg = current_msg.next();
+            if(next_msg.size() == 0)
+                next_msg = $('div[data-message-id]:first');
+            next_msg.addClass('in_roll');
+            t = next_msg.position().top -  $('[data-message-id]:first').position().top;
+        }
+        $('.message_area').animate({
+            scrollTop: t
+        }, 100);
+        if(rolling) {
+            setTimeout('roll_message()', 150);
+        } else {
+            openid = next_msg.attr('data-openid');
+            if(openid in rolled) {
+                setTimeout('roll_message()', 150);
+            } else {
+                rolled[openid] = true;
+            }
+        }
+    }
+
+
+
+    // global variables
+
+    var timer;
+
+    var flag = new Array(100);
+
+    var existingnum = new Array(100);
+
+    var clickTimes = 0;
+
+    var randnum;
+
+    var cellnum = 1;
+
+    var mobile = new Array();
+
+    var num;
+    // set data here!!
+    //x变量传递不下来
+
+    function getRandNum() {
+        var y = 100;
+        for (var n = 0; n < x - 98; ++n) //数组上限x
+        {
+            mobile[n] = y;
+            y = y + 1;
+        }
+
+        num = mobile.length - 1;
+
+        document.getElementById("result").value = mobile[GetRnd(0, num)];
+
+    }
+
+    function start() {
+
+        clearInterval(timer);
+
+        timer = setInterval('change()', 50);
+
+    }
+
+    function ok() {
+
+        clearInterval(timer);
+
+    }
+
+    function GetRnd(min, max) {
+
+        randnum = parseInt(Math.random() * (max - min + 1));
+
+        return randnum;
+
+    }
+
+    function setTimer() {
+
+        timer = setInterval("getRandNum();", 10);
+
+        document.getElementById("start").disabled = true;
+
+        document.getElementById("end").disabled = false;
+
+    }
+
+    function clearTimer() {
+
+        noDupNum();
+
+        clearInterval(timer);
+
+        document.getElementById("start").disabled = false;
+
+        document.getElementById("end").disabled = true;
+
+    }
+
+    function noDupNum() {
+
+        // to remove the selected mobile phone number
+
+        mobile.removeEleAt(randnum);
+
+        // to reorganize the mobile number array!!
+
+        var o = 0;
+
+        for (p = 0; p < mobile.length; p++) {
+
+            if (typeof mobile[p] != "undefined") {
+
+                mobile[o] = mobile[p];
+
+                o++;
+
+            }
+
+        }
+
+        num = mobile.length - 1;
+
+    }
+
+    // method to remove the element in the array
+
+    Array.prototype.removeEleAt = function (dx) {
+
+        if (isNaN(dx) || dx > this.length) {
+            return false;
+        }
+
+        this.splice(dx, 1);
+
+    }
+
+    // set mobile phone numbers to the table cell
+
+    function setValues() {
+
+        document.getElementById(cellnum).value = document.getElementById("result").value;
+
+        cellnum++;
+
+    }
+
+</script>
+
+<style>
+body {
+    background: #4E5359 url(img/wallbg.png) repeat 0 0;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    display: block;
+}
+
+#container {
+    border: 0;
+}
+
+#wall {
+    position: relative;
+    margin: 0 auto;
+    padding: 40px 0 30px 0;
+    width: 962px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+#leftpanel {
+    position: relative;
+    float: left;
+    width: 276px;
+    border-radius: 6px;
+    z-index: 99;
+    border: 1px solid #424448;
+    box-shadow: 0 2px 6px #313131;
+}
+
+.title {
+    height: 39px;
+    border-radius: 5px 5px 0 0;
+    border-top: 1px solid #9BA3AE;
+    border-bottom: 1px solid #333;
+    background-color: #5B6774;
+    background: -webkit-gradient(linear, left top, left bottom, from(#6B7888), to(#545E6A), color-stop(0.1, #6A7786), color-stop(0.5, #5E6977), color-stop(0.9, #56616D), color-stop(1.0, #545E6A));
+    background-image: -moz-linear-gradient(top, #6A7786 10%, #5E6977 50%, #56616D 90%, #545E6A 100%);
+    border-radius: 3px 3px 0 0;
+    font-weight: bolder;
+}
+
+.content {
+    margin: 0px;
+    background-color: #E7EBEE;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EEF2F5), to(#D2D5D9), color-stop(0.1, #EEF2F5), color-stop(0.3, #EEF1F4), color-stop(0.5, #E7EBEE), color-stop(0.7, #E1E4E8), color-stop(0.9, #D4D8DC), color-stop(1.0, #D2D5D9));
+    background-image: -moz-linear-gradient(top, #EEF2F5 10%, #EEF1F4 30%, #E7EBEE 50%, #E1E4E8 70%, #D4D8DC 90%, #D2D5D9 100%);
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #ABB0B4;
+}
+
+.info {
+    float: left;
+    margin: 0px;
+    margin-left: 74px;
+    margin-top: 10px;
+    width: 150px;
+}
+
+.info_font {
+    margin-top: 0px;
+    display: block;
+    color: #fff;
+    text-shadow: none;
+    font-size: 14px;
+
+    overflow: hidden;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: '微软雅黑', Helvetica, Arial, sans-serif;
+    text-align: left;
+    float: left;
+}
+
+.draw_title {
+    margin: 0px;
+    font-weight: bolder;
+    background-color: #E7EBEE;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EEF2F5), to(#D2D5D9), color-stop(0.1, #EEF2F5), color-stop(0.3, #EEF1F4), color-stop(0.5, #E7EBEE), color-stop(0.7, #E1E4E8), color-stop(0.9, #D4D8DC), color-stop(1.0, #D2D5D9));
+    background-image: -moz-linear-gradient(top, #EEF2F5 10%, #EEF1F4 30%, #E7EBEE 50%, #E1E4E8 70%, #D4D8DC 90%, #D2D5D9 100%);
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #ABB0B4;
+}
+
+.draw_icon {
+    width: 40%;
+    display: block;
+    float: left;
+}
+
+.draw_font {
+    margin-top: 0px;
+    display: block;
+    color: #fff;
+    text-shadow: none;
+    font-size: 14px;
+    overflow: hidden;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: '微软雅黑', Helvetica, Arial, sans-serif;
+    text-align: left;
+    margin-top: 12px;
+    float: right;
+    width: 65%;
+    color: black;
+    font-weight: bolder;
+}
+
+.list_icon {
+    background: url("img/buttons.png") no-repeat;
+    background-position: -56px -69px;
+    display: block;
+    width: 25px;
+    height: 22px;
+    margin: 0px;
+    margin-left: 74px;
+    margin-top: 10px;
+}
+
+.list_row {
+    border-top: 1px solid #F7F7F7;
+    border-bottom: 1px solid #D5D6D7;
+    text-shadow: 0 1px 0 white;
+    cursor: pointer;
+    height: 45px;
+    overflow: hidden;
+}
+
+.list_font {
+    margin-top: 5px;
+    width: 45%;
+    margin-left: 3.3%;
+    display: block;
+    color: #000;
+    text-shadow: none;
+    font-size: 14px;
+    overflow: hidden;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: '微软雅黑', Helvetica, Arial, sans-serif;
+    text-align: left;
+    float: left;
+}
+
+#wallpanel {
+    margin-left: 312px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px #313131;
+    border-color: #ddd;
+}
+
+.group_icon {
+    background: url("img/buttons.png") no-repeat;
+    background-position: -62px -91px;
+    display: block;
+    width: 25px;
+    height: 22px;
+    margin: 0px;
+    margin-top: 8px;
+    margin-right: 8px;
+    float: right;
+}
+
+.message_area {
+    height: 777px;
+    margin: 0px;
+    background-color: #E7EBEE;
+    background: -webkit-gradient(linear, left top, left bottom, from(#EEF2F5), to(#D2D5D9), color-stop(0.1, #EEF2F5), color-stop(0.3, #EEF1F4), color-stop(0.5, #E7EBEE), color-stop(0.7, #E1E4E8), color-stop(0.9, #D4D8DC), color-stop(1.0, #D2D5D9));
+    background-image: -moz-linear-gradient(top, #EEF2F5 10%, #EEF1F4 30%, #E7EBEE 50%, #E1E4E8 70%, #D4D8DC 90%, #D2D5D9 100%);
+    border-top: 1px solid #FFF;
+    border-bottom: 1px solid #ABB0B4;
+    overflow-y: hidden;
+    border-radius: 0 0 4px 4px;
+    overflow: auto;
+}
+
+.msgitem {
+    font-family: '微软雅黑', Helvetica, Arial, sans-serif;
+    padding: 18px;
+    width: 90%;
+    display: block;
+}
+
+.msgcontent {
+    border: 1px solid #ABB0B4;
+    border-radius: 8px;
+    background: #F5F5F5;
+    padding: 8px;
+    min-width: 50px;
+    max-width: 300px;
+    display: block;
+}
+
+.msgcontent img {
+    max-width: 240px;
+    max-height: 320px;
+}
+
+.msgsender {
+    border: 1px solid #ABB0B4;
+    border-radius: 8px;
+    padding: 8px;
+    display: block;
+    border: 1px solid #ffaf0f;
+    background: #f58400
+}
+
+.right_msg .msgsender {
+    float: right;
+    margin-right: 18px;
+}
+
+.right_msg .msgcontent {
+    float: right;
+    margin-right: 18px;
+}
+
+.left_msg .msgsender {
+    float: left;
+    margin-right: 18px;
+}
+
+.left_msg .msgcontent {
+    float: left;
+    margin-right: 18px;
+}
+
+.in_roll {
+    background-color:#6C0;
+}
+</style>
+</head>
+
+<body>
+<body>
+<input type="hidden" id="lastmid" value="0"/>
+<input type="hidden" id="lastdid" value="0"/>
+
+<div id="container">
+    <div id="wall">
+        <div id="leftpanel">
+            <div class="title">
+                <div class="info"><span class="info_font">关注优企公众号</span></div>
+            </div>
+
+            <div class="content" style="height:276px">
+                <img src="img/logo.jpg" style="width:274px;height:276px;"/>
+            </div>
+
+            <div class="title" style=" margin-top:10px;">
+                <div class="info"><span style="text-align:center; color:#fff">抽奖</span></div>
+            </div>
+
+            <div class="content" style="height:100px;border-radius: 0 0 4px 4px;overflow: auto;"><br>
+<br>
+
+
+                <input type="button" value="开始"
+                       style="border: 1px solid; height:2em; border-color:#aaa 000 #000 #aaa;width:6em; font-size:14px; background:#FF0; font-family:'微软雅黑';"
+                       onClick="start_roll()"/>
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="button" value="停"
+                       style="border: 1px solid; height:2em;border-color:#aaa 000 #000 #aaa;width:6em; font-size:14px;font-family:'微软雅黑';background: #ff0;"
+                       onclick="stop_roll()"/>
+
+            </div>
+
+            <div class="draw_title" style="height:45px; margin-top:10px;">
+
+                <span class="draw_font">参与用户</span>
+            </div>
+
+            <div id="draw_list" class="content" style="height:290px;border-radius: 0 0 4px 4px;overflow: auto;">
+            </div>
+        </div>
+        <div id="wallpanel">
+            <div class="title">
+                <div class="info"><span class="info_font" style="margin-left:155px">微时代-新机遇-新渠道</span></div>
+                <div class="group_icon"></div>
+            </div>
+            <div class="message_area">
+                <div id="msglist" style="padding: 20px">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="footer"></div>
+</body>
+
+
+</html>

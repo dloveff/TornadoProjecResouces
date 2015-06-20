@@ -1,0 +1,97 @@
+
+
+<div class="container-fluid">
+<div class="row-fluid sortable">
+				<div class="box span12">
+					<div class="box-header well" data-original-title>
+						<h2>个人资料</h2>
+						<div class="box-icon">
+						</div>
+					</div>
+					<div class="box-content">
+					<form class="form-horizontal">
+							<fieldset>
+
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">用户名</label>
+								<div class="controls">
+								  <input class="input-xlarge focused"  type="text" id="username" disabled="disabled">
+								</div>
+							  </div>
+							  <div class="control-group">
+								<label class="control-label">姓名</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" type="text" id="fullname" disabled="disabled">
+								</div>
+							  </div>
+							  <div class="control-group">
+								<label class="control-label" for="focusedInput">手机号码</label>
+								<div class="controls">
+								  <input class="input-xlarge focused" type="text" id="mobile" disabled="disabled">
+								</div>
+							  </div>
+							 <div class="control-group">
+								<label class="control-label" >邮箱</label>
+								<div class="controls">
+								 <input class="input-xlarge focused" type="text" id="email" disabled="disabled">
+								</div>
+							  </div>
+							  <input type="hidden" id="mp"/>
+							  <div class="form-actions">
+								<a class="btn btn-danger" href="javascript:logins();">修改资料</a>
+								<a class="btn btn-danger" href="javascript:UpdatePassWorld();">重置密码</a>
+							  </div>
+
+						</fieldset>
+					  </form>
+
+					</div>
+				</div>
+			
+			</div>
+			
+
+			
+			</div>
+  </div>
+	
+</div>		
+<div class="myconsolelxrdiv" style="width:77%;height:50;display:none;">
+        
+	             <div class="lxadd"  style="border-width:1px;">
+					<table>
+						  <thead>
+						   <tr> 
+							<td align="left"><p>姓&nbsp;名:&nbsp;&nbsp;&nbsp;<input type="text" id="fullname1"></p></td>
+                           </tr>  
+						   <tr> 
+							<td align="left"><p>手机号:&nbsp;&nbsp;<input type="text" id="mobile1"></p></td>
+                           </tr>  
+						   <tr> 
+							<td align="left"><p>邮&nbsp;&nbsp;箱:&nbsp;&nbsp;<input type="text" id="email1"></p></td>
+                           </tr>                             
+						   </thead>
+				   </table>
+	            </div>
+                 <center><h4 id="myconsole" style="color:#FF0000"></h4></center>
+			</div>	
+			<div class="updateUser" style="width:77%;height:50;display:none;">
+        
+	             <div class="lxadd"  style="border-width:1px;">
+					<table>
+						  <thead>
+						    <tr> 
+							<td align="left"><p>重置密码:&nbsp;<input type="password" id="pass"></p></td>
+                           </tr>                             
+						   </thead>
+				   </table>
+	            </div>
+               <center><h4 id="show" style="color:#FF0000"></h4></center>
+			</div>	
+
+<script type="text/javascript">
+ $(function(){
+	allUser();
+});
+
+</script>

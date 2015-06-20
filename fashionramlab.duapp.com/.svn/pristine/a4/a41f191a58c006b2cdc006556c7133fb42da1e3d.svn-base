@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WEICBD - 虚拟中心商务区</title>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                type: 'GET',
+                url: '/passport',
+                async: false,
+                success: function () {
+                    window.location.replace('/portal/portal.html');
+                },
+                error: function () {
+                    window.location.replace('/login?prompt=请先登陆');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

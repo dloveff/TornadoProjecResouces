@@ -1,0 +1,52 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+__author__ = '锦峰'
+
+import tornado.web
+import meta
+import os
+import base64
+from db import log
+
+from bae.core import const
+from bae.api import bcs
+
+HOST = const.BCS_ADDR
+AK = const.ACCESS_KEY
+SK = const.SECRET_KEY
+
+BUCKET = u'fashionramlab'
+
+
+class UploadFileHandler(tornado.web.RequestHandler):
+    __metaclass__ = meta.HandlerMetaClass
+    route = r'/u'
+
+    def post(self):
+        path_prefix = '/uploadimg/nobody/'
+        if self.get_secure_cookie('username'):
+            from weicbd.aaa import AAADao
+            dao = AAADao()
+            path_prefix = '/uploadimg/%d/' % dao.get_user(self.get_secure_cookie('username'))[0]
+
+        baebcs = bcs.BaeBCS(HOST, AK, SK)
+        file_metas = self.request.files['file']
+        for meta in file_metas:
+            filename = meta['filename'].decode('utf-8')
+            body = meta['body']
+            baebcs.put_object(BUCKET, path_prefix + filename, base64.b64encode(body))
+        self.add_header('Content-Type', 'text/xml; charset=utf-8')
+        self.write('<upload><path>%s</path></upload>' % (path_prefix + filename))
+
+
+class UploadFileHandler(tornado.web.RequestHandler):
+    __metaclass__ = meta.HandlerMetaClass
+    route = r'/uploadimg/(.*)'
+
+    def get(self, sub_path):
+        path = os.path.join(os.sep + 'uploadimg', sub_path)
+
+        baebcs = bcs.BaeBCS(HOST, AK, SK)
+        e, response = baebcs.get_object(BUCKET, path)
+        self.write(base64.b64decode(response))

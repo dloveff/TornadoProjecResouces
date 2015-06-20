@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>家博城</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="keywords" content="家博城">
+<meta name="description" content="家博城">
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/jquery.1.4.2-min.js"></script>
+</head>
+<body>
+<div class="pw">
+	<header class="body_header">
+		<div class="top">
+			<div class="logo"><img src="images/jb_02.png"></div>
+		</div>
+	</header>
+	<section class="body_main">
+		<div class="trip">
+			<div class="main">
+				<div class="tt">家博城网上招商</div>
+				<div class="tc">
+					<p><span style="font:'微软雅黑'; font-size:14px; color:#666666">&nbsp;&nbsp;&nbsp;&nbsp;项目占地总面积622亩，分两期规划开发建设，一期占地面积为302亩，二期占地面积为320亩；项目一期总建筑面积达80万平方米，主要经营家具、建材、灯饰、家纺布艺、家饰……将于2012年年内耀世登场；项目二期正规划中。</span></p>
+					<p><span style="font:'微软雅黑'; font-size:14px; color:#666666">&nbsp;&nbsp;&nbsp;&nbsp;一期项目由四座楼高9层的主体建筑构成，中间以超大型十字中庭天幕连廊紧密互通，形成32万平方米的超大十字型天幕，缔造四位一体的购物环境。地下一层为可同时停放6000辆汽车的大型停车场。地面配套12万平方米的大型公共绿地佛博广场，配置1500个停车位，以及娱乐休闲设施。1—9层为各类品牌家居的展览与采购贸易品牌展示厅,产品囊括绿色生态家具、陶瓷、卫浴洁具、床上用品、家居饰物等十七大类，数十万种商品。整栋建筑集商务洽谈、餐饮、休闲、会议、行业培训等多功能于一体，给消费者一站式家居产品购物的全新体验。</span></p>
+					<p><span style="font:'微软雅黑'; font-size:14px; color:#666666">&nbsp;&nbsp;&nbsp;&nbsp;一期项目规划可容纳国内外中高端知名家居品牌达2000余个，倾力打造批零结合的国际化顶级家居主题博览中心和全球一站式贸易平台，它的耀世登场必将成为全球单体面积最大的世界顶尖家居殿堂，直接影响全球家居产业格局，筑就泛国际大家居贸易新地标。<br>
+					</span></p>
+			  </div>
+			</div>
+		</div>
+	</section> 
+	<div class="body_footer">
+		<ul>
+			<li>
+				<a href="index.html">
+					<dl>
+						<dt><img alt="返回首页" src="images/icon_1.png"></dt>
+						<dd>返回首页</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a title="打电话" href="tel:400-101-3888">
+					<dl>
+						<dt><img alt="打电话" src="images/icon_4.png"></dt>
+						<dd>打电话</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a title="微商城" href="http://www.360jbc.com/mobile/">
+					<dl>
+						<dt><img alt="微商城" src="images/icon_5.png"></dt>
+						<dd>微商城</dd>
+					</dl>
+				</a>
+			</li>					
+			<li>
+				<a href="">
+					<dl>
+						<dt><img alt="地图" src="images/icon_3.png"></dt>
+						<dd>一键导航</dd>
+					</dl>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>

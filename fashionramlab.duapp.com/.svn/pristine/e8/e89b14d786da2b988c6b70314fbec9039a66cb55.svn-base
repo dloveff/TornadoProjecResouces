@@ -1,0 +1,146 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import logging
+
+
+class Mysqldb(object):
+    def __conn(self):
+        if self.conn is None:
+            from MySQLdb import connect
+            from sys import modules
+            if 'bae' in modules:
+                from bae.core import const
+                dbconf = {
+                    'user': const.MYSQL_USER,
+                    'passwd': const.MYSQL_PASS,
+                    'db': 'NtwLDxlnbZIsMEPsgrFH',
+                    'host' : const.MYSQL_HOST,
+                    'port' : int(const.MYSQL_PORT),
+                    'charset' : self.charset
+                }
+            elif 'sae' in modules:
+                from sae import const
+                dbconf = {
+                    'user': const.MYSQL_USER,
+                    'passwd': const.MYSQL_PASS,
+                    'db': const.MYSQL_DB,
+                    'host': const.MYSQL_HOST,
+                    'port': int(const.MYSQL_PORT),
+                    'charset': self.charset
+                }
+
+            self.conn = connect(**dbconf)
+        return self.conn
+
+    def __init__(self):
+        self.charset = 'utf8'
+        self.conn = None
+
+    def commit(self):
+        self.__conn().commit()
+
+    def close(self):
+        self.__conn().close()
+
+    def execute(self, sql, arg=None):
+        cursor = self.__conn().cursor()
+        cursor.execute(sql, arg or tuple())
+        cursor.close()
+        return cursor.lastrowid
+
+    def executemany(self, sql, arg):
+        cursor = self.__conn().cursor()
+        cursor.executemany(sql, arg or tuple())
+        cursor.close()
+
+    def rollback(self):
+        self.__conn().rollback()
+
+    def select(self, sql, arg=None):
+        cursor = self.__conn().cursor()
+        cursor.execute(sql, arg or tuple())
+        for r in cursor:
+            try:
+                yield r
+            except GeneratorExit:
+                cursor.close()
+            # cursor.close()
+
+    def fetchone(self, sql, arg=None):
+        cursor = self.__conn().cursor()
+        cursor.execute(sql, arg or tuple())
+        rt = cursor.fetchone()
+        # cursor.close()
+        return rt
+
+    def fetchall(self, sql, arg=None):
+        cursor = self.__conn().cursor()
+        cursor.execute(sql, arg or tuple())
+        for r in cursor.fetchall():
+            try:
+                yield r
+            except GeneratorExit:
+                cursor.close()
+
+    def __create(self, cur):
+        pass
+
+    def __del__(self):
+        if self.conn is not None:
+            self.conn.close()
+
+
+def get_log_list():
+    db = Mysqldb()
+    return db.fetchall('''
+        SELECT content FROM cloud_logger ORDER BY tm desc limit 0, 50
+    ''')
+
+def getLogger():
+    logger = logging.getLogger('cloud_logger')
+    logger.setLevel(logging.INFO)
+
+    ch = DBLoggingHandler()
+    ch.setLevel(logging.INFO)
+    ch_format = logging.Formatter('<div><p>%(asctime)s - %(levelname)s</p><xmp>%(message)s</xmp></div>')
+    ch.setFormatter(ch_format)
+    logger.addHandler(ch)
+
+    return logger
+
+logger = getLogger()
+
+
+def log(msg):
+    logger(msg)
+    return msg
+
+
+class DBLoggingHandler(logging.Handler):
+    def __init__(self, db=None):
+        super(DBLoggingHandler, self).__init__()
+        if db is None:
+            db = Mysqldb()
+            db.execute('''
+                CREATE TABLE IF NOT EXISTS cloud_logger (
+                    id bigint NOT NULL AUTO_INCREMENT,
+                    tm timestamp NOT NULL DEFAULT NOW(),
+                    content text,
+                    PRIMARY KEY (id)
+                )
+            ''')
+            db.commit()
+        self.db = db
+
+    def flush(self):
+        self.db.commit()
+
+    def emit(self, record):
+        try:
+            msg = self.format(record)
+            self.db.execute('INSERT INTO cloud_logger(content) VALUES(%s)', (msg,))
+            self.flush()
+        except:
+            self.handleError(record)
+

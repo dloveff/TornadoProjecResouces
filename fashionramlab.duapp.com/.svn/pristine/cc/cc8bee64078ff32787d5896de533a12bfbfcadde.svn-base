@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>优企信息技术有限公司</title>
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="common/public.css" />
+<link type="text/css" rel="stylesheet" href="images/style.css" />
+<script type="text/javascript" src="common/jquery.js"></script>
+<script type="text/javascript" src="common/alert.js"></script>
+<script type="text/javascript" src="common/common.js"></script>
+<script type="text/jscript">
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+WeixinJSBridge.call('hideToolbar');
+});
+
+
+</script>
+
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #FF0000;
+	font-weight: bold;
+	font-size: 20px;
+}
+-->
+</style>
+</head>
+
+<body>
+<div class="header">
+    <a data-rel="back" data-role="none" class="back"><p></p></a>
+    <a data-role="none" href="daohan.htm"><p></p></a>
+    <a data-role="none" href="tel:400-666-9838"><p></p></a>
+    <a data-role="none" class="links"><p></p></a>
+</div>
+<div class="content">
+    <p><p><br/></p><p style="text-align: center;"><strong><span style="font-size: 20px;">联系优企</span></strong></p><p style="text-indent:32px"><span style="font-size:16px;font-family:宋体"><br/></span></p><p style="text-align: center;"><img src="Connect.jpg" width="600" height="200" border="0" hspace="0" vspace="0" title="" style="width:100%; height:auto;"/></p>
+    <p style="text-indent:32px"><span style="font-size:16px;font-family:宋体"><br/></span></p><p><span class="STYLE1">Connect US</span><br>
+      网　　址：http://www.yourqi.com<br>
+      免费服务咨询热线：0757-88013666<br>
+      欢迎您光临佛山市优企信息技术有限公司<br>
+      公司地址：广东·佛山·禅城区福宁路君宁大厦A座801<br>
+      邮　　编：528000<br>
+      电　　话：0757-88013666<br>
+      传　　真：0757-88013366<br>
+      客服电话：0757-88013818<br>
+      本地服务：0757-88013666  88013837   E-mail：Services@yourqi.com<br>
+      技术支持：0757-88012962  88013839   E-mail：2652176348@qq.com<br>
+      售前咨询：0757-88013818  88013830   E-mail：1725467273@qq.com<br>
+      公交路线：（佛山市二医院下车：桂28、107、110、115、125、128、143、153）<br/></p>
+	  <p style="text-align: center;"><img src="Connect_01.jpg" width="426" height="218" border="0" hspace="0" vspace="0" title="" style="width:100%; height:auto;"/></p>
+</div>
+
+
+ 
+
+ <div class="sidebar"> <a href="index.htm" data-role="none">
+        <p class="text">网站首页</p>
+        <p class="pic"></p>
+    </a>
+    <a href="About.htm" data-role="none">
+            <p class="text">关于我们</p>
+            <p class="pic"></p>
+        </a><a href="wenhua.htm" data-role="none">
+            <p class="text">核心文化</p>
+            <p class="pic"></p>
+        </a><a href="Serve.htm" data-role="none">
+            <p class="text">服务优势</p>
+            <p class="pic"></p>
+        </a><a href="Team.htm" data-role="none">
+            <p class="text">团队风采</p>
+            <p class="pic"></p>
+        </a><a href="Case.htm" data-role="none">
+            <p class="text">品牌案例</p>
+            <p class="pic"></p>
+        </a><a href="newsclass.htm" data-role="none">
+            <p class="text">咨询动态</p>
+            <p class="pic"></p>
+        </a>
+        <a href="Connect.htm" data-role="none">
+            <p class="text">联系我们</p>
+            <p class="pic"></p>
+        </a></div>
+
+<div class="bj" style="display:none"></div>
+</body>
+</html>

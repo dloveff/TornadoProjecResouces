@@ -1,0 +1,1 @@
+{% module Template(get_module_template(id), **get_arguments_dict()) %}

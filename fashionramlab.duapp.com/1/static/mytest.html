@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script>
+        document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+            document.getElementById('post-user').addEventListener('click', function(){
+                WeixinJSBridge.invoke('profile',{
+                    'username':'gh_69c20058c402',
+                    'scene':'57'
+                });
+            });
+
+            //WeixinJSBridge.call('hideToolbar');
+        });
+    </script>
+</head>
+<body>
+<h1><a href="javascript:;" id="post-user">TEST</a></h1>
+</body>
+</html>

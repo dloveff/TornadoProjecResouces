@@ -1,0 +1,303 @@
+﻿function add_tag_text(t, txt) {
+	$(t).before('<div class="tag"><span>' + txt + '</span><a href="#" onclick="remove_tag(this)">x</a></div>');
+	$(t).val('');
+}
+function add_tag(t) {
+	add_tag_text(t, $(t).val());
+}
+function remove_tag(t) {
+	$(t).parent().remove();
+}
+function add_tags(txt) {
+	$('#updatags').before('<div class="tag"><span>' + txt + '</span><a href="#" onclick="remove_tag(this)">x</a></div>');
+	$('#updatags').val('');
+}
+
+function addconsole_module_cms(){
+var doc = $.parseXML('<article/>');
+var console_module_cmsid=$("#mpid").val(); 
+$(doc).find("article").attr("mpid",console_module_cmsid);
+	function create_node(tag, name) {
+		e = doc.createElement(tag);
+		e.appendChild(doc.createCDATASection(name));
+		return e;
+	}
+    var oeditor = CKEDITOR.instances.section1.getData();
+	doc.documentElement.appendChild(create_node('title', $("#title").val()));
+	doc.documentElement.appendChild(create_node('priority', $("#priority").val()));
+	doc.documentElement.appendChild(create_node('content', oeditor));
+	tags = doc.createElement('tags');
+	$(".tag span").each(function(){
+		tags.appendChild(create_node('tag', $(this).text()));
+	});
+	doc.documentElement.appendChild(tags);
+
+	rawxml = new XMLSerializer().serializeToString(doc);
+    alert(rawxml)
+		 $.ajax({
+			    type: 'POST',
+			   url: 'mparticle',
+			   data:rawxml,
+                statusCode:{
+                  200:function(){
+                      $("#dialog-console_module_cms").dialog( "close" );
+                      findconsole_module_cms();
+                  },500:function(){
+                      $("#addcms").text("添加失败");
+                  }
+
+              }
+
+
+			});
+}
+//查找全部内容
+function findconsole_module_cms(){
+var console_module_cmsid=$("#mpid").val();
+$.ajax({
+		   type:'GET',
+		   url: '/mparticlelist/'+console_module_cmsid,
+		   success:function(date){
+           $("#mparticlelist tr:not(#titlist)").remove();
+		   $(date).find("article").each(function(){
+                     var id = $(this).attr("id");
+                    var priority = $(this).children("priority").text();
+		            var title = $(this).children("title").text();
+				    var content = $(this).children("content").text();
+				    var tags = $(this).children("tags").text();
+                    var tag="";
+                    $(this).children("tags").find("tag").each(function(){
+                      tag+="<span>"+$(this).text()+"</span>";
+                    });
+                    $("#mparticlelist").append("<tr><td data-article-title="+id+">" +title+
+					"</td><td data-article-priority="+id+">" +priority+
+					"</td><td data-article-content="+id+">" +content+
+                     "</td><td data-article-tags="+id+">"+tag+"</td><td><a href='javascript:deleteShowcms("+id+")'>删除</a>&nbsp;&nbsp;<a href='javascript:updateconsole_module_cmsshow("+id+")'>修改</a></td></tr>");
+				   });
+
+		    	}
+		   });
+}
+//删除资讯
+function deleteconsole_module_cms(id){
+		 $.ajax({
+			    type: 'DELETE',
+			   url: '/mparticle/'+id,
+			   success: function(data) {
+                findconsole_module_cms();
+
+			   },error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert("删除失败");
+                    }
+
+			});
+}
+//添加
+function showconsole_module_cms(){
+
+      if (CKEDITOR.instances['section1']) {
+    CKEDITOR.instances['section1'].destroy();
+    }
+   CKEDITOR.replace('section1');
+     CKEDITOR.instances.section1.setData("");
+    $("#title").val("");
+    $("#imagesShow").text("");
+    $("#tag_input").html("");
+     $("#addcms").text("");
+     $("#dialog-console_module_cms").dialog("open");
+    findconsole_module_cms();
+}
+//安标签查找数据
+function findtag(tags){
+var console_module_cmsid=$("#mpid").val();
+$.ajax({
+		   type:'GET',
+           url:'mparticlelist/'+console_module_cmsid+'?&tag='+tags,
+		    success:function(date){
+           $("#mparticlelist tr:not(#titlist)").remove();
+		   $(date).find("article").each(function(){
+                     var id = $(this).attr("id");
+                    var priority = $(this).children("priority").text();
+		            var title = $(this).children("title").text();
+				    var content = $(this).children("content").text();
+				    var tags = $(this).children("tags").text();
+                    var tag="";
+                    $(this).children("tags").find("tag").each(function(){
+                      tag+="<span>"+$(this).text()+"</span>";
+                    });
+                    $("#mparticlelist").append("<tr><td data-article-title="+id+">" +title+
+					"</td><td data-article-priority="+id+">" +priority+
+					"</td><td data-article-content="+id+">" +content+
+                     "</td><td data-article-tags="+id+">"+tag+"</td><td><a href='javascript:deleteShowcms("+id+")'>删除</a>&nbsp;&nbsp;<a href='javascript:updateconsole_module_cmsshow("+id+")'>修改</a></td></tr>");
+				   });
+
+		    	}
+		   });
+}
+function deleteShowcms(id){
+	$.confirm({
+			'title'		: '温馨提示',
+			'message'	: '<h5>确认删除？</h5>',
+			'buttons'	: {
+				'确认'	: {
+					'class'	: 'blue',
+					'action': function(){
+                     deleteconsole_module_cms(id);
+					}
+				},
+				'取消'	: {
+					'class'	: 'gray',
+					'action': function(){}
+				}
+			}
+		});
+
+
+}
+function updateconsole_module_cmsshow(id){
+  $(".tag").remove();
+var title=$("#mparticlelist [data-article-title="+id+"]").text();
+var content=$("#mparticlelist [data-article-content="+id+"]").html();
+var priority=$("#mparticlelist [data-article-priority="+id+"]").text();
+    $("#mparticlelist [data-article-tags="+id+"] span").each(function(){
+         $("#prcetag").before('<div class="tag"><span>' + $(this).text() + '</span><a href="#" onclick="remove_tag(this)" name="deletetag">x</a></div>');
+
+    });
+    $("#upatacms").text("");
+     $("#sectionShow").text("");
+    $("#updatitle").val(title);
+    $("#updatpriority").val(priority);
+    if (CKEDITOR.instances['section2']) {
+    CKEDITOR.instances['section2'].destroy();
+    }
+   CKEDITOR.replace('section2');
+   CKEDITOR.instances.section2.setData(content);
+     $("#dialog-console_module_update" ).dialog({
+      resizable: false,
+      height:720,
+	  width: 600,
+      modal: true,
+      buttons: {
+        "修改": function() {
+            updateconsole_module_cms(id);
+            $("#dialog-console_module_update").dialog("close");
+        }
+      }
+    });
+}
+
+function updateconsole_module_cms(id){
+var doc = $.parseXML('<article/>');
+	function create_node(tag, name) {
+		e = doc.createElement(tag);
+		e.appendChild(doc.createCDATASection(name));
+		return e;
+	}
+    var oeditor2 = CKEDITOR.instances.section2.getData();
+	doc.documentElement.appendChild(create_node('title', $("#updatitle").val()));
+	doc.documentElement.appendChild(create_node('priority', $("#updatpriority").val()));
+	doc.documentElement.appendChild(create_node('content', oeditor2));
+	tags = doc.createElement('tags');
+	$(".tag span").each(function(){
+		tags.appendChild(create_node('tag', $(this).text()));
+	});
+	doc.documentElement.appendChild(tags);
+	rawxml = new XMLSerializer().serializeToString(doc);
+		 $.ajax({
+			    type: 'PUT',
+			   url: '/mparticle/'+id,
+			   data:rawxml,
+			  statusCode:{
+                  200:function(){
+                      findconsole_module_cms();
+                  },500:function(){
+
+                      $("#upatacms").text("修改失败");
+                  }
+
+              }
+
+			});
+}
+//查看图片列表
+function findListIamges(){
+	$.ajax({
+		   type:'GET',
+		   url: '/myimg',
+		   success:function(date){
+           	$("#images option").remove();
+		   $(date).find("images").children("image").each(function(){
+				    var names = $(this).text();
+                    var name = $(this).text();
+					var pa = $('<option />');
+					pa.text(names);
+                    pa.val(name);
+				    $("#images").append(pa);
+
+				   });
+
+		    	}
+		   });
+}
+function addsectionListIamges(){
+	$.ajax({
+		   type:'GET',
+		   url: '/myimg',
+		   success:function(date){
+           	$("#addsection option").remove();
+		   $(date).find("images").children("image").each(function(){
+				    var names = $(this).text();
+                    var namesvalue = $(this).text();
+					var pa = $('<option />');
+
+					pa.text(names);
+                    pa.val(namesvalue);
+				    $("#addsection").append(pa);
+
+				   });
+
+		    	}
+		   });
+}
+function addsection(){
+CKEDITOR.instances.section1.insertHtml('<img src='+$("#images").val()+'>')
+
+}
+function addsection2(){
+CKEDITOR.instances.section2.insertHtml('<img src='+$("#addsection").val()+'>')
+
+}
+function ajaxFileUpload(){
+		 $.ajaxFileUpload({
+		        url: '/upload',
+                fileElementId:'file',
+			   success: function(data) {
+                   var name=dadad;
+                     alert($(data).find("image").attr("src"));
+                      $("#imagesShow").text("上传成功").css({"color":"red"});
+                      findListIamges();
+			   },error: function(XMLHttpRequest, textStatus, errorThrown) {
+                       $("#imagesShow").text("上传失败").css({"color":"red"});
+                    }
+			});
+
+
+
+
+}
+function ajaxFileUpload2(){
+		 $.ajaxFileUpload({
+		        url: '/upload',
+                fileElementId:'sectionImage',
+			   success: function(data) {
+                      $("#sectionShow").text("上传成功").css({"color":"red"});
+                      findListIamges();
+			   },error: function(XMLHttpRequest, textStatus, errorThrown) {
+                       $("#sectionShow").text("上传失败").css({"color":"red"});
+                    }
+			});
+
+
+
+
+}

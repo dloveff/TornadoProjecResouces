@@ -1,0 +1,35 @@
+/**
+ * Created by TsukiHiBoshi on 14-1-8.
+ */
+function findListTag(){
+    var mpid=$("#mpid").val();
+    $.ajax({
+        type:'GET',
+        url: '/mptags/'+mpid,
+        success:function(date){
+           arrfun(date);
+        }
+    });
+}
+
+function arrfun(date){
+  $(date).find("tags").children("tag").each(function(){
+          var aid = $(this).children("tag").attr("id");
+          var aname = $(this).children("tag").attr("name");
+          addelement(aname,aid);
+          $(this).find("tag").children("tag").each(function(){
+             var id = $(this).children("tag").attr("id");
+             var name = $(this).children("tag").attr("name");
+             addelement(name,id);
+          });
+	});
+
+}
+
+function addelement(name,id){
+    $("#body").append("<tr>" +
+         "<td>" +name+"</td>" +
+         "<td>" +id+"</td>" +
+         "</tr>"
+    )
+}

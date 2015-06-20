@@ -1,0 +1,138 @@
+﻿function add_tag_text(t, txt) {
+	$(t).before('<div class="tag"><span>' + txt + '</span><a href="#" onclick="remove_tag(this)">x</a></div>');
+	$(t).val('');
+}
+function add_tag(t) {
+	add_tag_text(t, $(t).val());
+}
+function remove_tag(t) {
+	$(t).parent().remove();
+}
+
+
+function addconsole_module_cms(){
+var doc = $.parseXML('<article/>');
+var console_module_cmsid=$("#mpid").val(); 
+$(doc).find("article").attr("mpid",console_module_cmsid);
+	function create_node(tag, name) {
+		e = doc.createElement(tag);
+		e.appendChild(doc.createCDATASection(name));
+		return e;
+	}
+    var oeditor = CKEDITOR.instances.editor1.getData();	
+	doc.documentElement.appendChild(create_node('title', $("#title").val()));
+	doc.documentElement.appendChild(create_node('priority', $("#priority").val()));
+	doc.documentElement.appendChild(create_node('content', oeditor));
+	tags = doc.createElement('tags');
+	$(".tag span").each(function(){
+		tags.appendChild(create_node('tag', $(this).text()));
+	});
+	doc.documentElement.appendChild(tags);
+	rawxml = new XMLSerializer().serializeToString(doc);
+		 $.ajax({
+			    type: 'POST',
+			   url: 'mparticle',
+			   data:rawxml,
+			   success: function(data) {
+			   }
+
+			});
+}
+//查找全部内容
+function findconsole_module_cms(){
+var console_module_cmsid=$("#mpid").val();
+$.ajax({
+		   type:'GET',
+		   url: '/mparticlelist/'+console_module_cmsid,
+		   success:function(date){
+           $("#mparticlelist tr:not(#titlist)").remove();
+		   $(date).find("article").each(function(){
+                     var id = $(this).attr("id");
+                    var priority = $(this).children("priority").text();
+		            var title = $(this).children("title").text();
+				    var content = $(this).children("content").text();
+				    var tags = $(this).children("tags").text();
+                    $("#mparticlelist").append("<tr><td data-article-title="+id+">" +title+
+					"</td><td>" +priority+
+					"</td><td data-article-content="+id+">" +content+
+                     "</td><td>" +tags+
+					 "</td><td><a href='javascript:deleteShowcms("+id+")'>删除</a>&nbsp;&nbsp;&nbsp;<a href='javascript:updateconsole_module_cms("+id+")'>修改</a></td></tr>");
+				   });
+
+		    	}
+		   });
+}
+//删除资讯
+function deleteconsole_module_cms(id){
+		 $.ajax({
+			    type: 'DELETE',
+			   url: '/mparticle/'+id,
+			   success: function(data) {
+                findconsole_module_cms();
+
+			   },error: function(XMLHttpRequest, textStatus, errorThrown) {
+
+                    }
+
+			});
+}
+//添加
+function showconsole_module_cms(){
+     $("#dialog-console_module_cms").dialog("open");
+
+
+
+
+
+}
+//安标签查找数据
+function findtag(tags){
+var console_module_cmsid=$("#mpid").val();
+$.ajax({
+		   type:'GET',
+           url:'mparticlelist/'+console_module_cmsid+'?&tag='+tags,
+		   success:function(date){
+           $("#mparticlelist tr:not(#titlist)").remove();
+		   $(date).find("article").each(function(){
+                     var id = $(this).attr("id");
+                    var priority = $(this).children("priority").text();
+		            var title = $(this).children("title").text();
+				    var content = $(this).children("content").text();
+				    var tags = $(this).children("tags").text();
+                    $("#mparticlelist").append("<tr><td data-article-title="+id+">" +title+
+					"</td><td>" +priority+
+					"</td><td data-article-content="+id+">" +content+
+                     "</td><td>" +tags+
+					 "</td><td><a href='javascript:deleteconsole_module_cms("+id+")'>删除</a>&nbsp;&nbsp;&nbsp;<a href='javascript:updateconsole_module_cms("+id+")'>修改</a></td></tr>");
+				   });
+
+		    	}
+		   });
+}
+function deleteShowcms(id){
+	$.confirm({
+			'title'		: '温馨提示',
+			'message'	: '<h5>确认删除？</h5>',
+			'buttons'	: {
+				'确认'	: {
+					'class'	: 'blue',
+					'action': function(){
+                     deleteconsole_module_cms(id);
+					}
+				},
+				'取消'	: {
+					'class'	: 'gray',
+					'action': function(){}
+				}
+			}
+		});
+
+
+}
+function updateconsole_module_cms(id){
+ $("#dialog-console_module_update" ).dialog("open");
+
+
+
+
+}

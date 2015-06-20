@@ -1,0 +1,27 @@
+<article>
+    <header><h3>我的账号</h3></header>
+        <form id="form1" name="form1" method="post" action="" data-service-url="/passport" data-service-type="GET">
+          <input type="hidden" name="id"/>
+          <p>
+            <label for="email">电子邮箱</label>
+            <input type="text" name="email" id="username" readonly />
+          </p>
+          <p>
+            <label for="mobile">手机号码</label>
+            <input type="text" name="mobile" id="mobile" readonly />
+          </p>
+          <p>
+            <label for="password">密码</label>
+            <input type="password" name="password" id="password" />
+          </p>
+          <p>
+            <label for="confirm">确认</label>
+            <input type="password" name="confirm" id="confirm" />
+          </p>
+
+          <p>
+            <input type="button" value="修改密码"/>
+            <span id="feedback" style="color: red"/>
+          </p>
+        </form>                
+</article>            

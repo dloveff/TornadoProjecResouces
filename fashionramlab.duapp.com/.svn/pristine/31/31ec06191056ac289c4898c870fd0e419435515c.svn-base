@@ -1,0 +1,343 @@
+﻿﻿﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+ 
+<title>仿高兴婚礼策划微官网手机wap微信网站模板列表页-懒人模板【www.lanrenmb.com】</title> 
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+
+<link href="template/default/theme2/pwx.css" rel="stylesheet" type="text/css">
+<link href="template/default/theme2/news2.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="pwximg/plugmenu.css">
+
+  <script src="pwximg/audio.min.js" type="text/javascript"></script>
+   
+    <script>
+      audiojs.events.ready(function() {
+        audiojs.createAll();
+      });
+    </script>
+<script>
+window.onload = function ()
+{
+var oWin = document.getElementById("win");
+var oLay = document.getElementById("overlay");	
+var oBtn = document.getElementById("popmenu");
+var oClose = document.getElementById("close");
+oBtn.onclick = function ()
+{
+oLay.style.display = "block";
+oWin.style.display = "block"	
+};
+oLay.onclick = function ()
+{
+oLay.style.display = "none";
+oWin.style.display = "none"	
+}
+};
+</script><style>
+#cate6 .mainmenu li.li0:nth-child(5) .menumesg {
+    background-color: #990000;
+}
+#cate6 .mainmenu li.li0:nth-child(1) .menumesg {
+    background-color: #01AA0A;
+}
+#cate6 .mainmenu li.li0:nth-child(9) .menumesg {
+    background-color: #8B4500;
+}
+
+#cate8 .mainmenu li .menubtn {
+    border-radius: 5px;
+}
+#cate8 .mainmenu li div img {
+    border-radius: 5px;
+}
+
+ .themeStyle{background:#DE270B}  
+
+</style></head> 
+    
+
+<body
+ id="listhome3"
+>
+<div id="ui-header">
+<div class="fixed">
+
+<a class="ui-title" id="popmenu"><font  style="font-size: 18px;">选择分类</font> </a>
+
+<a class="ui-btn-left_pre" href="javascript:" onclick="window.history.go(-1)"></a>
+
+<a class="ui-btn-right_home" href="pwx.php@uid=119"></a>
+</div>
+</div>
+<div id="overlay"></div>
+
+<div id="win">
+
+<ul class="dropdown"> 
+    <li><a href="link.php@url=http_3A_2F_2Fwww.ansuocn.com_252Fpwx.php_253Fuid_253D119%26do_253Dcard%26view_253Dme"><span>关于高兴</span></a></li>
+   <li><a href="pwx2.php@uid=119&classid=70&do=blog&view=me"><span>婚礼案例</span></a></li>
+   <li><a href="pwx2.php@uid=119&classid=71&do=blog&view=me"><span>婚礼项目</span></a></li>
+   <li><a href="pwx2.php@uid=119&classid=72&do=blog&view=me"><span>婚礼资讯</span></a></li>
+   <li><a href="pwx2.php@uid=119&classid=1379&do=blog&view=me"><span>婚礼喜帖</span></a></li>
+   <li><a href="pwx2.php@uid=119&classid=1380&do=blog&view=me"><span>玩转婚礼</span></a></li>
+ 
+<div class="clr"></div>
+
+</ul>
+</div>
+
+<div class="Listpage">
+<div class="top46"></div>
+
+
+<div class="topding">
+
+<ul class="chatPanel">
+
+</ul>
+</div>
+
+
+
+<div id="todayList">
+
+ <ul class="chatPanel">
+  
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=12012">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">婚礼宾客参加婚礼前须熟读10条准则</span><span class="time">2013-11-12 15:21</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201311/12/119_1384240867DGdA.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+【导读】一年中的好日子又将至了，  相信很多人现在已经开始陆续收</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=11016">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">新人参加婚礼秀可以收获什么？</span><span class="time">2013-10-30 17:30</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201310/30/119_1383125431MrRB.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+【导读】   很多酒店和婚庆公司都在举行婚礼秀，新人参加婚礼秀究</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=10697">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">彰显品位 婚礼桌花的经典搭配原则</span><span class="time">2013-10-25 17:12</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201310/25/119_1382692348N5sQ.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+【导读】桌花是   婚礼   不可缺少的浪漫元素，婚礼桌花不仅能衬托</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=9698">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">【新人须知】如何拍出真实自然的婚纱照</span><span class="time">2013-10-10 16:15</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201310/10/119_13813929523czV.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+【导读】婚纱照拍出来总是像个小木偶，笑容很假，表情很僵，动作都像摆</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=6562">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">高兴婚礼策划：结婚时新娘为什么要披头纱？</span><span class="time">2013-08-15 16:29</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201308/15/119_1376555375b4v8.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+【导读】结婚时新娘为什么要披头纱?新娘结婚披头纱的习俗来源与</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=6495">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">2013年9-10月份结婚吉日</span><span class="time">2013-08-14 18:16</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201308/14/119_137647537556x4.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+2013年9月结婚吉日         公元2013年09月01日 农历07月(小)26</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=6362">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">【12星座如何浪漫过七夕】</span><span class="time">2013-08-12 17:09</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201308/12/119_137629852799Hl.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=5589">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">【婚礼用花技巧】</span><span class="time">2013-07-25 16:29</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201307/25/119_1374742717ffdk.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+婚礼上鲜花是我们最爱的一种装饰物，不仅美观还芳香扑鼻，绝对是婚礼</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=5189">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">【婚礼知识】婚礼场地实地考察前要做哪些准备</span><span class="time">2013-07-16 17:22</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201307/16/119_13739675464594.jpg) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+要确定婚礼场地肯定需要实地考察，那么，在实地考察前我们要做哪些准</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+    
+
+
+<li class="media mediaFullText">
+<a href="pwx2.php@uid=119&do=blog&id=5187">
+<div class="mediaPanel">
+<div class="mediaHead"><span class="title">【2013个性童话系列钻戒】</span><span class="time">2013-07-16 16:30</span>
+<div class="clr" style="background-origin:content-box"></div>
+</div>
+ <div class="mediaImg" style="background:url(http://www.ansuocn.com/attachment/201307/16/119_1373962904q5Cw.png) no-repeat center center; background-size:100% auto;-moz-background-size:100% auto;-webkit-background-size:100% auto;-o-background-size-size:100% auto; height:150px;"></div>
+<div class="mediaContent mediaContentP">
+戴着童话钻戒去追寻童话般的爱情故事，下面小编就让你梦想成真，一起</div>
+<div class="mediaFooter">
+<span class="mesgIcon right"></span><span style="line-height:50px;" class="left">点击阅读全文>></span>
+<div class="clr"></div>
+</div>
+</div>
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<div class="pagination">
+<div class="disabled"><a>上一页</a></div><div class="allpage"><div class="currentpage">1/3</div><select id="dropdown-select" name="select" onchange="dourl(this.value)"><option selected="selected" value="pwx2.php@uid=119&do=blog&view=me&classid=72&page=1">第1页</option><option value="pwx2.php@uid=119&do=blog&view=me&classid=72&page=2">第2页</option><option value="pwx2.php@uid=119&do=blog&view=me&classid=72&page=3">第3页</option></select></div><div><a href="pwx2.php@uid=119&do=blog&view=me&classid=72&page=2">下一页</a></div></div>
+</div>
+<a class="footer" href="#" target="_self"><span class="top">返回顶部</span></a>
+<script>
+function dourl(url){
+location.href= url;
+}
+</script>
+<div class="plug-div">
+        <div class="plug-phone">
+            <div class="plug-menu themeStyle"><span class="close"></span></div> 
+               
+                        <div class="themeStyle plug-btn plug-btn1 close"><a href="tel_3A18688679999"><span style="background-image: url(pwximg/plugmenu1.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn2 close"><a href="pwx.php@uid=119&do=card&view=me"><span style="background-image: url(pwximg/plugmenu2.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn3 close"><a href="pwx.php@uid=119"><span style="background-image: url(pwximg/plugmenu6.png);"></span></a></div>
+                  
+                        <div class="themeStyle plug-btn plug-btn4 close"><a href="pwx.php@uid=119&do=album&classid=72&view=me"><span style="background-image: url(pwximg/plugmenu7.png);"></span></a></div>
+                         
+<div class="plug-btn plug-btn5 close"></div>
+                    </div>
+</div>
+<script src="pwximg/zepto.min.js" type="text/javascript"></script>
+<script src="pwximg/plugmenu.js" type="text/javascript"></script>
+ <div class="copyright">温馨提示：本信息仅供提供演示方便链接，与原网站无关！ <a href="index.html">首页</a>  <a href="zhengwen.html">正文页</a>  <a href="liebiao.html">列表页</a></div> <div style="display:none"> </div>
+ 
+
+</body></html>

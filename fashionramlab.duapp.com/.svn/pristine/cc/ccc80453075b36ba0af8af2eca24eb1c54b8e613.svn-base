@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+<title>内部测试</title>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.submit').click(function(){
+
+		register();
+	});
+
+	
+	function register(){//注册
+		xmldom =$.parseXML("<member/>");
+		var mobile = $.parseXML("<mobile>" + $('.mobile').val()+ "</mobile>").firstChild.cloneNode(true);
+		var emaile =$.parseXML("<email>"+$('.emaile').val()+"</email>").firstChild.cloneNode(true);
+		var name =$.parseXML("<name>"+$('.name').val()+"</name>").firstChild.cloneNode(true);
+		var password =$.parseXML("<password>"+$('.password').val()+"</password>").firstChild.cloneNode(true);
+		var sex =$.parseXML("<sex>"+$('.sex').val() +"</sex>").firstChild.cloneNode(true);
+		var birth =$.parseXML("<birth>"+$('.birth').val()+"</birth>").firstChild.cloneNode(true);
+
+		xmldom.firstChild.appendChild(mobile);
+		xmldom.firstChild.appendChild(emaile);
+		xmldom.firstChild.appendChild(name);
+		xmldom.firstChild.appendChild(password);
+		xmldom.firstChild.appendChild(sex);
+		xmldom.firstChild.appendChild(birth);
+
+		date = (new XMLSerializer().serializeToString(xmldom));
+
+		$.ajax({//注册
+			type:"POST",
+			url:"/mpregister",
+			contentType:"application/xml",
+			data:date,
+            success:function(data){
+               alert('ok');
+            }
+			
+		}); 
+	}
+
+
+
+});
+
+</script>
+</head>
+<body>
+ <div class="divone">
+		  <form class="dfrom">
+			  <input type="text" class="name"/>
+			   <br/>
+			  <input type="mobile" class="mobile"/>
+			  <br/>
+			  <input type="text" class="password"/>
+			  <br/>
+			  <input type="text" class="emaile"/>
+			  <br/>
+			  <input type="mobile" class="sex"/>
+			  <br/>
+			  <input type="text" class="birth"/>
+			  <br/>
+			  <input type="button" class="submit" value="提交"/>
+			  <input type="reset" value="重置"/>
+		  </form>
+	  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+from db import log
+
+
+class HandlerMetaClass(type):
+    handlers = []
+
+    def __new__(cls, clsname, bases, attrs):
+        newclass = super(cls, HandlerMetaClass).__new__(cls, clsname, bases, attrs)
+        if 'route' in dir(newclass):
+            HandlerMetaClass.handlers.append((newclass.route, newclass))
+        return newclass
+
+
+class PluginMetaClass(type):
+    plugins = {}
+
+    def __new__(cls, clsname, bases, attrs):
+        newclass = super(cls, PluginMetaClass).__new__(cls, clsname, bases, attrs)
+        PluginMetaClass.plugins['%s.%s' % (newclass.__module__, clsname)] = newclass
+        return newclass

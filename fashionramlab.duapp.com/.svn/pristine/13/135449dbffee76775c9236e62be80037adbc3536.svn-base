@@ -1,0 +1,54 @@
+
+<!doctype html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>标签</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" href="css/jquery.mobile-1.4.0-rc.1.min.css" />
+<script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+<script src="js/jquery.mobile-1.4.0-rc.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    $.ajax({
+        type:'GET',
+        url:'/mptags',
+        success:function(data){
+            $(data).find('tags').children('tag').each(function(){
+                var id =$(this).attr('id');
+                var name =$(this).attr('name');
+                $('#mpcms_taglist').append('<li>'+name+'</li>')
+                tagselement(this);
+            });
+        }
+    });
+});
+function tagselement(ele){
+    $(ele).children("tag").each(function(){
+          var id = $(this).attr("id");
+          var name = $(this).attr("name");
+          $("#mpcms_taglist").append('<li>'+name+'</li>');
+          tagselement(this);
+    })
+}
+ </script>
+<style type="text/css">
+#typeList a{
+margin-left:10px;}
+</style>
+</head>  
+<body>  
+<div data-role="page" id="demo-page" data-theme="a" data-url="demo-page">
+    <div role="main" data-role="content">
+		<!--<div id="abc" data-role="collapsible-set" data-theme="a" data-content-theme="a">
+		</div>-->
+        <ul id="mpcms_taglist" data-role="listview" data-theme="g">
+       <!--    <li><a href="acura.html">Acura</a></li>
+           <li><a href="audi.html">Audi</a></li>
+           <li><a href="bmw.html">BMW</a></li>-->
+        </ul>
+    </div>
+</div>
+</div>  
+</body>  
+</html>  

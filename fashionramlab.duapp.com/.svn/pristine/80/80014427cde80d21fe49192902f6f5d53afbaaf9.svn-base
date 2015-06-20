@@ -1,0 +1,24 @@
+/**
+ * Created by 北极鱼 on 14-1-17.
+ */
+
+
+function findaddress(){
+    $.ajax({
+        type:'GET',
+        url: '/mptags/'+ $("#mpid").val(),
+        success:function(date){
+           var name= $(date).find('name').text();    //位置名称
+           var longitude = $(date).find('longitude').text(); //经度
+           var latitude = $(date).find('latitude').text();   //维度
+            $("#addressbody").append('<tr id="'+id+'">'
+                +'<td>'+ name +'</td>'
+                +'<td>'+ longitude +'</td>'
+                +'<td>'+latitude+'</td></tr>');
+        }
+    });
+}
+
+
+
+

@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>优企信息技术有限公司</title>
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<title>佛山市优企信息技术有限公司</title>
+<link type="text/css" rel="stylesheet" href="common/public.css" />
+<link type="text/css" rel="stylesheet" href="images/style.css" />
+<script type="text/javascript" src="common/jquery.js"></script>
+<script type="text/javascript" src="common/alert.js"></script>
+<script type="text/javascript" src="common/common.js"></script>
+<script type="text/jscript">
+document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+WeixinJSBridge.call('hideToolbar');
+});
+
+
+</script>
+
+</head>
+<body>
+
+<div class="header">
+    <a data-rel="back" data-role="none" class="back"><p></p></a>
+    <a data-role="none" href="Connect.htm"><p></p></a>
+    <a data-role="none" href="tel:400-666-9838"><p></p></a>
+    <a data-role="none" class="links"><p></p></a>
+</div>
+<div data-role="listview" class="list-content">
+  <a href="New-33.html" data-role="none">
+   <div class="text-img">微信支付让O2O至少提早5年</div>
+  <p></p>
+  </a>
+  <a href="New-31.html" data-role="none">
+   <div class="text-img">外媒盘点2013生活方式趋势 微信榜上有名</div>
+  <p></p>
+  </a>
+  <a href="New-30.html" data-role="none">
+   <div class="text-img">微信，超过六亿人使用的手机应用</div>
+  <p></p>
+  </a>
+  <a href="New-29.html" data-role="none">
+   <div class="text-img">微信的发展史？</div>
+  <p></p>
+  </a>
+  <a href="New-28.html" data-role="none">
+   <div class="text-img">微信是什么？</div>
+  <p></p>
+  </a>
+  <a href="New-27.html" data-role="none">
+   <div class="text-img">微信的3个发展趋势</div>
+  <p></p>
+  </a>
+  <a href="New-26.html" data-role="none">
+   <div class="text-img">谷歌发布了一项名为Google Instant的即时搜索功能</div>
+  <p></p>
+  </a>
+<table width="98%" border="0" cellspacing="10" cellpadding="0">
+  <tr height="35">
+    <td align="center">
+共<strong style="color:red">7</strong>条记录 页次：<strong style="color:red">1</strong>/1 每页：<strong style="color:red">12</strong>条记录
+&nbsp;<strong style="color:red">1</strong>&nbsp;    </td>
+  </tr>
+</table>
+
+         <!--
+<div class="button">
+<a href="#" class="prve" data-role="none">上一页</a>
+<a href="#" class="next" data-role="none">下一页</a>
+</div>
+-->
+</div>
+<div class="footer">
+    <p class="footer-top">&COPY;佛山优企信息技术有限公司</p>
+</div>
+
+ 
+
+ <div class="sidebar"> <a href="index.htm" data-role="none">
+        <p class="text">网站首页</p>
+        <p class="pic"></p>
+    </a>
+    <a href="About.htm" data-role="none">
+            <p class="text">关于我们</p>
+            <p class="pic"></p>
+        </a><a href="wenhua.htm" data-role="none">
+            <p class="text">核心文化</p>
+            <p class="pic"></p>
+        </a><a href="Serve.htm" data-role="none">
+            <p class="text">服务优势</p>
+            <p class="pic"></p>
+        </a><a href="Team.htm" data-role="none">
+            <p class="text">团队风采</p>
+            <p class="pic"></p>
+        </a><a href="Case.htm" data-role="none">
+            <p class="text">品牌案例</p>
+            <p class="pic"></p>
+        </a><a href="newsclass.htm" data-role="none">
+            <p class="text">资讯动态</p>
+            <p class="pic"></p>
+        </a>
+        <a href="Connect.htm" data-role="none">
+            <p class="text">联系我们</p>
+            <p class="pic"></p>
+        </a></div>
+
+<div class="bj" style="display:none"></div>
+</body>
+</html>

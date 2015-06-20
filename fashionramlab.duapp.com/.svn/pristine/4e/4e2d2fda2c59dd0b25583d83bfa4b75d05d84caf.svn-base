@@ -1,0 +1,81 @@
+import tornado.web, meta, auth
+import xml.etree.ElementTree as ET
+from db import Mysqldb
+
+class UploadFileHandler(tornado.web.RequestHandler):
+    __metaclass__ = meta.HandlerMetaClass
+    route = r'/upload'
+    def post(self):
+        file_metas = self.request.files['file']
+        username = self.get_secure_cookie('username')
+        for meta in file_metas:
+            filename = meta['filename']
+            imagebinary = meta['body']
+        dao=UploadSave()
+        dao.save(filename,username)
+
+
+
+class UploadSave(tornado.web.RequestHandler):
+         def save(self,filename,username):
+            account_id, =self.db.fetchone('select id from weicbd_account where username=%s',(username,)) or (None, )
+            __metaclass__ = meta.HandlerMetaClass
+            route = r'/img/'+filename+'/'+account_id+''
+            def post(self):
+                dao=UploadDao()
+
+
+
+
+
+
+class GetUploadFileHandler(tornado.web.RequestHandler):
+    __metaclass__ = meta.HandlerMetaClass
+    route = r'/myimg/(.*)'
+    def get(self,mg):
+        dao=UploadDao()
+        root = ET.Element('images')
+        for result in dao.all_images(mg):
+            id, filename = result
+            img = ET.SubElement(root, 'image', id=str(id))
+            self.__append_element(img, 'filename', filename)
+        self.set_header('Content-Type', 'text/xml; charset=utf-8')
+        self.write(ET.tostring(root, encoding='UTF-8'))
+
+    def __append_element(self, parent, tag, value):
+         e = ET.Element(tag)
+         if value:
+             e.text = value
+         parent.append(e)
+
+
+
+class UploadDao(object):
+    def __init__(self):
+        self.db =Mysqldb()
+        self.__create_table(self.db)
+
+    def __create_table(self, db):
+        db.execute('''
+            CREATE TABLE IF NOT EXISTS weicbd_account_image (
+                id bigint NOT NULL AUTO_INCREMENT,
+                filename varchar(255) NOT NULL,
+                imagebinary binary(225) NOT NULL,
+                account_id bigint NOT NULL,
+                FOREIGN KEY (account_id) REFERENCES weicbd_account(id),
+                PRIMARY KEY (id)
+            ) DEFAULT CHARACTER SET=utf8;
+        ''')
+
+    def create_images(self, filename,imagebinary,username):
+            account_id, =self.db.fetchone('select id from weicbd_account where username=%s',(username,)) or (None, )
+            images = self.db.execute('insert into weicbd_account_image(filename,imagebinary,account_id) values(%s,%s,%s)',(filename,imagebinary,account_id))
+            self.db.commit()
+            return images
+
+    def all_images(self,mg):
+        return self.db.fetchall('select id,filename from weicbd_account_image where account_id= %s ',(mg,))
+
+    def find_images(self,id):
+        return self.db.fetchone('select imagebinary from weicbd_account_image where id=%s',(id,))
+

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">    
+    <link rel="stylesheet" href="/css/themes/ui-lightness/jquery-ui.css"/>
+    <link rel="stylesheet" href="/css/main.css"/>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+    <script src="/js/jquery-ui.js"></script>
+    <script src="/js/service.js"></script>
+    <title>WEICBD - 虚拟工作圈</title>
+    
+    <script type="text/javascript">
+        $(function () {
+            setTimeout(function() {
+                xml = get_service('/circle/{{ id }}');
+                $('#circle_name').text($('name', xml).text());
+                $('#circle_description').text($('description', xml).text());
+            }, 0);
+            $('#tabs').tabs();
+        });
+        
+        function deploy(elm) {
+            var li_elm = $(elm).closest('li');
+            var doc = $.parseXML('<deployment/>');
+            __append_cdata_node(doc, doc.documentElement, 'class', $('[name="class"]', li_elm).text())
+            __append_cdata_node(doc, doc.documentElement, 'name', $('[name="name"]', li_elm).text())
+            __append_cdata_node(doc, doc.documentElement, 'version', $('[name="version"]', li_elm).text())
+            $.ajax({
+                type: 'POST',
+                url: '/deploy/{{ id }}',
+                data: new XMLSerializer().serializeToString(doc),
+                success: function(response, status, jqXHR) {
+                    load_service('#deployments-list');
+                },
+                error: function(jqXHR, status, error) { /* ... */ }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    {% include 'header.html' %}
+    <div class="container">
+        {% include 'nav.html' %}
+        <section class="center">
+            <article>
+                <header><h3> 我的圈子 > <span id="circle_name"/></h3></header>
+                <div id="tabs" style="position:relative;">
+                  <ul>
+                    <li><a href="#description-tab">描述</a></li>
+                    <li><a href="#members-tab">成员</a></li>
+                    <li><a href="#deploys-tab">应用部署</a></li>
+                  </ul>
+                  <div id="description-tab">
+                    <p id="circle_description"></p>
+                  </div>
+                  <div id="members-tab">
+                    成员列表
+                  </div>
+                  <div id="deploys-tab">
+                    <div>
+                        <h3>已部署模块</h3>
+                        <ul id="deployments-list" data-service-url="/deployments/{{ id }}" data-service-type="GET" data-iter-name="iter">
+                          <li name="iter">
+                            <p><span name="name"></span>：<span name="class"></span>.<span name="version"></span></p>
+                            <p><a data-link-prefix="m_wrapper.html?id=" name="id">部署实例编号：<span name="serial"></span></a></p>
+                          </li>
+                        </ul>
+                    </div>
+                    <div style="float: right;">
+                        <h3>可用模块</h3>
+                        <ul data-service-url="/modules" data-service-type="GET" data-iter-name="iter">
+                          <li name="iter" style="cursor: pointer;"><a onclick="return deploy(this)"><span name="name"></span>：<span name="class"></span>.<span name="version"></span></a></li>
+                        </ul>
+                    </div>
+                    <div style="clear: both;">
+                  </div>
+
+                </div>
+            </article>            
+                
+        </section>
+        <!--<aside>-->
+        <!--</aside>-->
+    </div>
+    {% include 'footer.html' %}
+</body>
+
+</html>

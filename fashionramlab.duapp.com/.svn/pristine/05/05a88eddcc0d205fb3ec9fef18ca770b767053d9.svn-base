@@ -1,0 +1,3 @@
+body:after {
+    content: "{{ request.arguments.get('footer', ['无页脚'])[0] }} ";
+}

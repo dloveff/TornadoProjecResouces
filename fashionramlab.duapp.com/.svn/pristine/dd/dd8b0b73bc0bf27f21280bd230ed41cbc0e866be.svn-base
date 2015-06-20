@@ -1,0 +1,27 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>欢迎来到虚拟工作圈！</h1>
+    <p>这是一个实验性项目，主要提供管理SOHO生意的工具工具箱，简化库存、账单、客户、社交推广的工作。通过这些工具箱旨意在减轻重复繁琐的日常管理工作，详细内容请看文档。</p>
+    <p><a class="btn btn-primary btn-lg" role="button">查看文档 &raquo;</a></p>
+  </div>
+</div>
+
+
+<!-- Example row of columns -->
+<div class="row">
+    <div class="col-md-4">
+      <h2>简化</h2>
+      <p>Soho为“家庭办公室”之意，为微小型经营实体的一种称呼。涉及经营便有许多琐碎繁杂的地方，再加上需要满足各种会计、税务的相关规定与法律，便是我们这个平台能发挥作用的地方。</p>
+      <p><a class="btn btn-default" href="#" role="button">查看详情 &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>碎片</h2>
+      <p>微小经营实体缺乏完整的人力资源结构，各种事务难以得到集中处理。因此我们利用多终端特性，让用户能够充分利用碎片时间，在各种不经意的空闲时间完成各种零散的事务。</p>
+      <p><a class="btn btn-default" href="#" role="button">查看详情 &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>社交</h2>
+      <p>渠道即生命，如何让你的客户找到你？如何让你的产品、服务送达？如何跟你的客户做朋友？我们提供综合的社交化推广平台，包括微信公众号、微博开放平台等运营系统。</p>
+      <p><a class="btn btn-default" href="#" role="button">查看详情 &raquo;</a></p>
+    </div>
+</div>

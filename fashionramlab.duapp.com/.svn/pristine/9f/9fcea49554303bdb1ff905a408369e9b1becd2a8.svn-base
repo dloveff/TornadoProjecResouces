@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>家博城</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="keywords" content="家博城">
+<meta name="description" content="家博城">
+<link type="text/css" rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/html5.js"></script>
+<script type="text/javascript" src="js/jquery.1.4.2-min.js"></script>
+</head>
+<body>
+<div class="pw">
+	<header class="body_header">
+		<div class="top">
+			<div class="logo"><img src="images/jb_02.png"></div>
+		</div>
+	</header>
+	<section class="body_main">
+		<div class="trip">
+			<div class="main">
+				<div class="tt">服务中心</div>
+			  <div class="tc">
+			    <div style="width:98%; margin:0 auto; text-align:center;"><img src="fuwu.jpg" width="500" height="89"><br>				 
+				    <div  style="text-align:left">
+					   <p><span style="font:'微软雅黑'; font-size:16px; color:#666666">服务文化</span></p>
+					    <span style="font:'微软雅黑'; font-size:14px; color:#666666">
+						诚信  对客户诚信、对同事诚信、对自己诚信<br>	
+                        共赢  与客户共赢、与同事共赢、与同行共赢<br>	
+                        团结  没有完美的个人，只有完美的团队<br>	
+                        勤奋  勤奋执着是成功的开始<br>
+						</span>
+				  </div>
+					
+					
+				  </div>
+		      </div>
+			</div>
+		</div>
+	</section> 
+	<div class="body_footer">
+		<ul>
+			<li>
+				<a href="index.html">
+					<dl>
+						<dt><img alt="返回首页" src="images/icon_1.png"></dt>
+						<dd>返回首页</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a title="打电话" href="tel:400-101-3888">
+					<dl>
+						<dt><img alt="打电话" src="images/icon_4.png"></dt>
+						<dd>打电话</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a title="微商城" href="http://www.360jbc.com">
+					<dl>
+						<dt><img alt="微商城" src="images/icon_5.png"></dt>
+						<dd>微商城</dd>
+					</dl>
+				</a>
+			</li>					
+			<li>
+				<a href="">
+					<dl>
+						<dt><img alt="地图" src="images/icon_3.png"></dt>
+						<dd>一键导航</dd>
+					</dl>
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+</body>
+</html>
